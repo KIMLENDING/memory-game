@@ -1,0 +1,49 @@
+1. 기본 UI 구성
+    1. 게임 시작 버튼
+    2. 점수 표시
+    3. 기억할 숫자/패턴을 보여줄 영역
+    4. 카드표시 카운트 다운 진행바
+    5. 결과 alert
+
+2. zustand를 사용해 게임 내용을 구성
+
+interface GameState {
+    level: number; 
+    numbers: number[]; // 숫자 배열
+    correctSequence: number[]; // 정답 확인 용도 (1부터 오름차순)
+    isPlaying: boolean; // 게임시작 상태
+    generateNumbers: () => void; // 숫자 배열 생성
+    startGame: () => void; // 시작
+    nextLevel: () => void; // 다음 레벨
+    resetGame: () => void; // 게임 리셋
+}
+
+    초기값 
+    level: 1,
+    numbers: [],
+    correctSequence: [],
+    isPlaying: false,
+
+    generateNumbers: () => {
+        set((state) => {
+            const numCount = state.level + 3; // 1단계: 4개, 2단계: 5개 ...
+            const orderedNumbers = Array.from({ length: numCount }, (_, i) => i + 1); // 1부터 순서대로 숫자 생성
+            const shuffledNumbers = [...orderedNumbers].sort(() => Math.random() - 0.5); // 숫자 섞기
+            return { numbers: shuffledNumbers, correctSequence: orderedNumbers }; 
+        });
+    },
+
+       startGame: () => {
+        set({ isPlaying: true });
+    },
+
+    nextLevel: () => {
+        set((state) => ({ level: state.level + 1 }));
+    },
+
+    resetGame: () => {
+        set({ level: 1, numbers: [], correctSequence: [], isPlaying: false });
+    },
+
+
+
