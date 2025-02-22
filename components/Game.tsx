@@ -89,7 +89,7 @@ const Game = () => {
             setRevealedCards(Array(numbers.length).fill(true)); //  오답 시 모든 카드 공개
 
             setTimeout(() => {
-                alert(`오답! 최종 점수: ${score}점\n다시 도전하세요!`);
+                alert(`오답! 최종 점수: ${score.toFixed(1)}점\n다시 도전하세요!`);
                 setScore(0); // 점수 초기화
                 resetGame();
             }, 100);
