@@ -5,9 +5,6 @@ import { useGameStore } from '@/store/gameStore';
 import { DrawerDialogDemo } from './DrawerDialogDame';
 import { Button } from './ui/button';
 import Head from 'next/head';
-import { useSearchParams } from 'next/navigation';
-
-
 
 
 const Game = () => {
@@ -23,9 +20,6 @@ const Game = () => {
     const firstBlockRef = useRef<HTMLDivElement | null>(null);
     const secondBlockRef = useRef<HTMLDivElement | null>(null);
     const thirdBlockRef = useRef<HTMLDivElement | null>(null);
-
-    const params = useSearchParams().get('score');
-    console.log(params);
 
 
     useEffect(() => {
@@ -141,12 +135,6 @@ const Game = () => {
 
     return (
         <>
-            <Head>
-                <meta property="og:title" content="게임 점수 자랑" />
-                <meta property="og:description" content={`내 게임 점수는 ${params}점!`} />
-                <meta property="og:image" content="/image.png" />
-                <meta property="og:url" content={`https://memory-game-lyart-phi.vercel.app/?score=${params}`} />
-            </Head>
             <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8"
                 style={{ backgroundColor: '#F4F8D3' }}>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center"

@@ -1,5 +1,6 @@
 import Game from "@/components/Game";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -45,7 +46,9 @@ export async function generateMetadata(
 export default function Home() {
   return (
     <main>
-      <Game />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Game />
+      </Suspense>
     </main>
   );
 }
