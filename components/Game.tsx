@@ -4,8 +4,6 @@ import { gsap } from "gsap";
 import { useGameStore } from '@/store/gameStore';
 import { DrawerDialogDemo } from './DrawerDialogDame';
 import { Button } from './ui/button';
-import Head from 'next/head';
-
 
 const Game = () => {
     const { level, numbers, correctSequence, isPlaying, score, timeForCurrentLevel, updateScore, generateNumbers, setTimeForLevel, startGame, nextLevel, resetGame } = useGameStore();
