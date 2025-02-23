@@ -2,17 +2,23 @@ import { create } from "zustand";
 
 interface GameState {
     level: number;
+    score: number;
+    timeForCurrentLevel: number;
     numbers: number[];
     correctSequence: number[];
     isPlaying: boolean;
+    setTimeForLevel: () => void;
+    updateScore: (startTime: number) => void;
     generateNumbers: () => void;
     startGame: () => void;
     nextLevel: () => void;
     resetGame: () => void;
 }
 
-export const useGameStore = create<GameState>((set) => ({
+export const useGameStore = create<GameState>()((set) => ({
     level: 1,
+    score: 0,
+    timeForCurrentLevel: 0, // 현재 레벨의 제한시간
     numbers: [],
     correctSequence: [],
     isPlaying: false,
@@ -26,6 +32,17 @@ export const useGameStore = create<GameState>((set) => ({
         });
     },
 
+    setTimeForLevel: () => {
+        const calculateTime = (level: number) => {
+            if (level <= 5) {
+                return 2 + level * 0.2; // 레벨 1~5: 2초 + 0.2초씩 증가
+            } else {
+                return 2 + Math.floor(level / 3) * 1; // 레벨 6부터는 3레벨당 1초씩 추가
+            }
+        };
+        set((state) => ({ timeForCurrentLevel: calculateTime(state.level) }));
+    },
+
     startGame: () => {
         set({ isPlaying: true });
     },
@@ -35,6 +52,17 @@ export const useGameStore = create<GameState>((set) => ({
     },
 
     resetGame: () => {
-        set({ level: 1, numbers: [], correctSequence: [], isPlaying: false });
+        set({ level: 1, numbers: [], correctSequence: [], score: 0, isPlaying: false, timeForCurrentLevel: 0 });
+    },
+
+    updateScore: (startTime: number) => {
+        const calculateScore = (startTime: number, level: number) => {
+            const endTime = Date.now();
+            const reactionTime = (endTime - startTime) / 1000; // 반응 속도 (초 단위)
+            const timeBonus = Math.max(0, 10 - reactionTime); // 10초 이내에 클릭 시 추가 점수
+            const levelBonus = 10 * level; // 레벨당 추가 점수
+            return timeBonus + levelBonus;
+        };
+        set((state) => ({ score: state.score + calculateScore(startTime, state.level) }));
     },
 }));
