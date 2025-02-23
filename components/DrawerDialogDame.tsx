@@ -27,6 +27,7 @@ import { useRankStore } from "@/store/rankStore"
 import { useState } from "react"
 import { Input } from "./ui/input"
 import { useRouter } from "next/navigation"
+import { useGameStore } from "@/store/gameStore"
 
 
 export function DrawerDialogDemo({ score, level }: { score: number, level: number }) {
@@ -35,6 +36,7 @@ export function DrawerDialogDemo({ score, level }: { score: number, level: numbe
     const [isComplited, setIsComplited] = useState(false);
     const isDesktop = useMediaQuery("(min-width: 768px)");
     const { addRank } = useRankStore();
+    const { resetGame } = useGameStore();
     const route = useRouter();
 
     // 랭킹에 추가하는 함수
@@ -106,7 +108,7 @@ export function DrawerDialogDemo({ score, level }: { score: number, level: numbe
                 </DrawerHeader>
                 <DrawerFooter className="pt-2">
                     {isComplited ? (
-                        <Button variant="default" onClick={() => route.push('/rank')}>랭킹 페이지 바로가기</Button>
+                        <Button variant="default" onClick={() => { resetGame(); route.push('/rank') }}>랭킹 페이지 바로가기</Button>
                     ) : (
                         <Button variant="default" onClick={addRanking}>랭킹등록</Button>
                     )}

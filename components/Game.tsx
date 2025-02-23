@@ -32,8 +32,11 @@ const Game = () => {
 
     useEffect(() => {
         if (timeForCurrentLevel) {
-            setTimeout(() => {
+            setShowNumbers(true); // 숫자 보여지는 상태 초기화
+            setStartTime(null); // 시작 시간 초기화
+            setProgress(0); // 진행 바 초기화
 
+            setTimeout(() => {
                 setShowNumbers(false);
                 setStartTime(Date.now()); // 숫자가 사라지는 순간 시간 저장
             }, (timeForCurrentLevel + 0.2) * 1000); // 단계별 시간에 맞춰 숫자 숨김
@@ -49,7 +52,7 @@ const Game = () => {
                 }
             }, 100); // 0.1초마다 업데이트
         }
-    }, [timeForCurrentLevel]);
+    }, [timeForCurrentLevel, level, isPlaying]); // level과 isPlaying을 의존성 배열에 추가하여 매번 실행되도록 함
 
     useEffect(() => {
         if (numbers.length === 0) return;
@@ -69,6 +72,12 @@ const Game = () => {
                 gsap.to(firstBlockRef.current, {
                     opacity: 0,
                     duration: 1,
+                    onStart: () => {
+                        // 애니메이션 시작 시 버튼 클릭 막기
+                        firstBlockRef.current?.classList.add('pointer-events-none');
+                        secondBlockRef.current?.classList.add('pointer-events-none');
+                        thirdBlockRef.current?.classList.add('pointer-events-none');
+                    },
                     onComplete: () => {
                         // 첫 번째 블록을 숨기고 두 번째, 세 번째 블록 이동
                         gsap.to(firstBlockRef.current, { height: 50 });
@@ -77,6 +86,13 @@ const Game = () => {
                                 y: -50, // 위로 50px 이동
                                 duration: 1,
                                 stagger: 0.3, // 두 번째, 세 번째 블록이 순차적으로 이동
+
+                                onComplete: () => {
+                                    // 애니메이션 완료 시 버튼 클릭 허용
+                                    firstBlockRef.current?.classList.remove('pointer-events-none');
+                                    secondBlockRef.current?.classList.remove('pointer-events-none');
+                                    thirdBlockRef.current?.classList.remove('pointer-events-none');
+                                }
                             });
                         }
                     },
@@ -100,7 +116,6 @@ const Game = () => {
                     y: 0,
                 });
             }
-
         }
     }, [gameOver]);
 
