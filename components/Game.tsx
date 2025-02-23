@@ -150,6 +150,10 @@ const Game = () => {
         <>
             <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8"
                 style={{ backgroundColor: '#F4F8D3' }}>
+                <div className='absolute top-0 left-0  px-6 sm:px-8 py-3 sm:py-4 sm:rounded-lg text-lg sm:text-xl font-bold 
+                w-full sm:w-auto text-center transition-shadow hover:shadow-lg hover:scale-105' style={{ backgroundColor: '#73C7C7' }}>
+                    랭킹
+                </div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center"
                     style={{ color: '#333' }}>
                     순간 기억력 테스트
@@ -170,7 +174,7 @@ const Game = () => {
                 <div
                     ref={firstBlockRef}
                     className={`grid grid-cols-4 gap-2 sm:gap-3 md:gap-4 p-2 rounded-lg w-full max-w-md sm:max-w-lg md:max-w-2xl 
-                    ${gameOver ? 'transition-all transform duration-1000 opacity-50 pointer-events-none' : ''}`}>
+                    ${gameOver ? 'pointer-events-none' : ''}`}>
                     {numbers.map((num, index) => (
                         <button
                             key={num}
