@@ -45,10 +45,10 @@ export async function generateMetadata(
 }
 export default function Home() {
   return (
-    <main>
+    <div>
       <Suspense fallback={<div>Loading...</div>}>
         <Game />
       </Suspense>
-    </main>
+    </div>
   );
 }

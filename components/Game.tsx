@@ -188,7 +188,7 @@ const Game = () => {
                         }}>
                             다시하기
                         </Button>
-                        <DrawerDialogDemo score={score} />
+                        <DrawerDialogDemo score={score} level={level} />
                     </div>
                 )}
 

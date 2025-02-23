@@ -23,13 +23,26 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { useRankStore } from "@/store/rankStore"
 import { useState } from "react"
+import { Input } from "./ui/input"
+import { useRouter } from "next/navigation"
 
 
-export function DrawerDialogDemo({ score }: { score: number }) {
-    const [open, setOpen] = useState(false)
-    const isDesktop = useMediaQuery("(min-width: 768px)")
+export function DrawerDialogDemo({ score, level }: { score: number, level: number }) {
+    const [open, setOpen] = useState(false);
+    const [name, setName] = useState("");
+    const [isComplited, setIsComplited] = useState(false);
+    const isDesktop = useMediaQuery("(min-width: 768px)");
+    const { addRank } = useRankStore();
+    const route = useRouter();
 
+    // 랭킹에 추가하는 함수
+    const addRanking = () => {
+        addRank(name, level, +score.toFixed(1));
+        alert('랭킹 등록 완료');
+        setIsComplited(true);
+    };
     // 점수에 포함된 URL을 복사하는 함수
     const copyLinkToClipboard = () => {
         const url = `https://memory-game-lyart-phi.vercel.app/?score=${score.toFixed(1)}`;
@@ -39,20 +52,31 @@ export function DrawerDialogDemo({ score }: { score: number }) {
             console.error("링크 복사 실패:", err);
         });
     };
+
     if (isDesktop) {
         return (
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                    <Button variant="outline">공유하기</Button>
+                    <Button variant="outline">랭킹등록</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
-                        <DialogTitle>공유하기</DialogTitle>
-                        <DialogDescription>
-                            링크 복사 버튼을 클릭하면 클립보드에 복사됩니다.
-                        </DialogDescription>
+                        <DialogTitle>랭킹등록</DialogTitle>
+                        <DialogDescription></DialogDescription>
+                        <div>
+                            <div className="space-y-2">
+                                <Input type="text" placeholder="이름" onChange={(e) => setName(e.target.value)} />
+                                <div className="px-2 text-gray-600 text-sm">
+                                    이름을 등록하면 랭킹에 등록됩니다.
+                                </div>
+                            </div>
+                        </div>
                     </DialogHeader>
                     <DialogFooter>
+
+                        {isComplited ?
+                            <Button variant="default" onClick={() => route.push('/rank')} >랭킹 페이지 바로가기기</Button> :
+                            <Button variant="default" onClick={addRanking} >랭킹등록</Button>}
                         <DialogClose asChild>
                             <Button variant="default" onClick={copyLinkToClipboard}>복사</Button>
                         </DialogClose>
@@ -65,21 +89,33 @@ export function DrawerDialogDemo({ score }: { score: number }) {
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <Button variant="outline">공유하기</Button>
+                <Button variant="outline">랭킹등록</Button>
             </DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader className="text-left">
-                    <DrawerTitle>공유하기</DrawerTitle>
-                    <DrawerDescription>
-                        링크 복사 버튼을 클릭하면 클립보드에 복사됩니다.
-                    </DrawerDescription>
+                    <DrawerTitle>랭킹등록</DrawerTitle>
+                    <DrawerDescription></DrawerDescription>
+                    <div>
+                        <div className="space-y-2">
+                            <Input type="text" placeholder="이름" onChange={(e) => setName(e.target.value)} />
+                            <div className="px-2 text-gray-600 text-sm">
+                                이름을 등록하면 랭킹에 등록됩니다.
+                            </div>
+                        </div>
+                    </div>
                 </DrawerHeader>
                 <DrawerFooter className="pt-2">
+                    {isComplited ? (
+                        <Button variant="default" onClick={() => route.push('/rank')}>랭킹 페이지 바로가기</Button>
+                    ) : (
+                        <Button variant="default" onClick={addRanking}>랭킹등록</Button>
+                    )}
                     <DrawerClose asChild>
                         <Button variant="default" onClick={copyLinkToClipboard}>복사</Button>
                     </DrawerClose>
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>
+
     )
 }
