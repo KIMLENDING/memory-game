@@ -6,7 +6,7 @@ const Rank = () => {
     const { ranking, fetchRanking } = useRankStore();
     useEffect(() => {
         fetchRanking();
-    }, [])
+    }, [fetchRanking])
     console.log(ranking)
     if (ranking === undefined) return <div>랭킹이 없습니다.</div>
     return (

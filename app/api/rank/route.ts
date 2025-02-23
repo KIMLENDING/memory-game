@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
         }
 
         return NextResponse.json({ message: "Rank added successfully!" });
-    } catch (error) {
+    } catch {
         return NextResponse.json({ error: "Failed to add rank" }, { status: 500 });
     }
 }
@@ -37,7 +37,7 @@ export async function GET() {
         }
 
         return NextResponse.json(ranking);
-    } catch (error) {
+    } catch {
         return NextResponse.json({ error: "Failed to fetch rankings" }, { status: 500 });
     }
 }
