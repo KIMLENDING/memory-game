@@ -1,5 +1,4 @@
 'use client'
-import { useGameStore } from '@/store/gameStore';
 import { useRankStore } from '@/store/rankStore';
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
