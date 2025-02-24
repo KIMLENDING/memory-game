@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { useGameStore } from '@/store/gameStore';
 import { DrawerDialogDemo } from './DrawerDialogDame';
 import { Button } from './ui/button';
+import { useRouter } from 'next/navigation';
 
 const Game = () => {
     const { level, numbers, correctSequence, isPlaying, score, timeForCurrentLevel, updateScore, generateNumbers, setTimeForLevel, startGame, nextLevel, resetGame } = useGameStore();
@@ -18,7 +19,7 @@ const Game = () => {
     const firstBlockRef = useRef<HTMLDivElement | null>(null);
     const secondBlockRef = useRef<HTMLDivElement | null>(null);
     const thirdBlockRef = useRef<HTMLDivElement | null>(null);
-
+    const route = useRouter();
 
     useEffect(() => {
         if (isPlaying) {
@@ -35,7 +36,7 @@ const Game = () => {
             setShowNumbers(true); // 숫자 보여지는 상태 초기화
             setStartTime(null); // 시작 시간 초기화
             setProgress(0); // 진행 바 초기화
-
+            console.log('timeForCurrentLevel', timeForCurrentLevel, level);
             setTimeout(() => {
                 setShowNumbers(false);
                 setStartTime(Date.now()); // 숫자가 사라지는 순간 시간 저장
@@ -150,10 +151,13 @@ const Game = () => {
         <>
             <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8"
                 style={{ backgroundColor: '#F4F8D3' }}>
-                <div className='absolute top-0 left-0  px-6 sm:px-8 py-3 sm:py-4 sm:rounded-lg text-lg sm:text-xl font-bold 
-                w-full sm:w-auto text-center transition-shadow hover:shadow-lg hover:scale-105' style={{ backgroundColor: '#73C7C7' }}>
+
+                <button
+                    className='fixed bottom-5 right-5 bg-blue-500 text-white p-3 rounded-full shadow-lg'
+                    onClick={() => route.push('/rank')}
+                >
                     랭킹
-                </div>
+                </button>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center"
                     style={{ color: '#333' }}>
                     순간 기억력 테스트

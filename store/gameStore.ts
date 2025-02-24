@@ -34,11 +34,7 @@ export const useGameStore = create<GameState>()((set) => ({
 
     setTimeForLevel: () => {
         const calculateTime = (level: number) => {
-            if (level <= 5) {
-                return 2 + level * 0.2; // 레벨 1~5: 2초 + 0.2초씩 증가
-            } else {
-                return 2 + Math.floor(level / 3) * 1; // 레벨 6부터는 3레벨당 1초씩 추가
-            }
+            return 2 + level * 0.2; // 레벨 1~5: 2초 + 0.2초씩 증가
         };
         set((state) => ({ timeForCurrentLevel: calculateTime(state.level) }));
     },

@@ -77,7 +77,7 @@ export function DrawerDialogDemo({ score, level }: { score: number, level: numbe
                     <DialogFooter>
 
                         {isComplited ?
-                            <Button variant="default" onClick={() => route.push('/rank')} >랭킹 페이지 바로가기기</Button> :
+                            <Button variant="default" onClick={() => { resetGame(); route.push('/rank') }} >랭킹 페이지 바로가기기</Button> :
                             <Button variant="default" onClick={addRanking} >랭킹등록</Button>}
                         <DialogClose asChild>
                             <Button variant="default" onClick={copyLinkToClipboard}>복사</Button>
