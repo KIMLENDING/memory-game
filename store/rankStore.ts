@@ -4,6 +4,7 @@ interface Rank {
     name: string;
     level: number;
     score: number;
+    time: number;
 }
 
 interface RankState {
@@ -28,10 +29,11 @@ export const useRankStore = create<RankState>((set) => ({
     // 🚀 점수 추가 (서버에 저장)
     addRank: async (name, level, score) => {
         try {
-            await axios.post("/api/rank", { name, level, score });
+            const time = new Date().getTime(); // 현재 시간을 밀리초로 가져오기
+            await axios.post("/api/rank", { name, level, score, time });
             set((state) => {
-                const newRanking = [...state.ranking, { name, level, score }];
-                newRanking.sort((a, b) => b.score - a.score); // 점수 내림차순 정렬
+                const newRanking = [...state.ranking, { name, level, score, time }];
+                newRanking.sort((a, b) => a.score === b.score ? a.time - b.time : b.score - a.score)
                 return { ranking: newRanking };
             });
         } catch (error) {
