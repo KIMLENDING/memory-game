@@ -24,7 +24,7 @@ const CanvasAnimation = () => {
         let y = 200;
         let dx = 2;
         let dy = 2;
-        let radius = 50;
+        const radius = 50;
         let hue = 0;
 
         const animate = () => {
