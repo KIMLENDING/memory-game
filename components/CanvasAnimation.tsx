@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 const CanvasAnimation = () => {
+    // const [speed, setSpeed] = useState(5);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const mouseOverRef = useRef(false);
     const hoverStartRef = useRef<number | null>(null);
@@ -22,8 +23,8 @@ const CanvasAnimation = () => {
 
         let x = 200;
         let y = 200;
-        let dx = 2;
-        let dy = 2;
+        let dx = 5;
+        let dy = 5;
         const radius = 50;
         let hue = 0;
 
