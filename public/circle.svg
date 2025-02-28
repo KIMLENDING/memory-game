@@ -1,0 +1,36 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- 바깥 고리 (끊어진 부분 추가) -->
+    <circle cx="150" cy="150" r="100" fill="none" stroke="#d4af37" stroke-width="4" stroke-dasharray="127 30" transform="rotate(98 150 150)"/>
+    
+    <!-- 점선 고리 -->
+    <circle cx="150" cy="150" r="95" fill="none" stroke="#d4af37" stroke-width="2" stroke-dasharray="4 6" opacity="0.8"/>
+
+    <!-- 내부 고리 -->
+    <circle cx="150" cy="150" r="50" fill="none" stroke="#d4af37" stroke-width="4" stroke-dasharray="13 13" transform="rotate(45 150 150)"/>
+
+    <circle cx="150" cy="150" r="75" fill="none" stroke="#d4af37" stroke-width="5" stroke-dasharray="96.4 21.4" transform="rotate(9 150 150)"/>
+    <circle cx="150" cy="150" r="90" fill="none" stroke="#d4af37" stroke-width="2"/>
+
+    <!-- 긴 돌출부 (원과의 겹치는 부분을 살짝 띄움) -->
+    <path d="M150 0 L145 30 L155 30 Z" fill="#d4af37"/>
+    <path d="M150 300 L145 270 L155 270 Z" fill="#d4af37"/>
+    <path d="M0 150 L30 145 L30 155 Z" fill="#d4af37"/>
+    <path d="M300 150 L270 145 L270 155 Z" fill="#d4af37"/>
+
+    <path d="M150 12.5 L145 45 L155 45 Z" fill="#d4af37"/>
+    <path d="M150 287.5 L145 255 L155 255 Z" fill="#d4af37"/>
+    <path d="M12.5 150 L45 145 L45 155 Z" fill="#d4af37"/>
+    <path d="M287.5 150 L255 145 L255 155 Z" fill="#d4af37"/>
+
+    <path d="M150 25 L145 60 L155 60 Z" fill="#d4af37"/>
+    <path d="M150 275 L145 240 L155 240 Z" fill="#d4af37"/>
+    <path d="M25 150 L60 145 L60 155 Z" fill="#d4af37"/>
+    <path d="M275 150 L240 145 L240 155 Z" fill="#d4af37"/>
+
+    <path d="M150 37.5 L145 75 L155 75 Z" fill="#d4af37"/>
+    <path d="M150 262.5 L145 225 L155 225 Z" fill="#d4af37"/>
+    <path d="M37.5 150 L75 145 L75 155 Z" fill="#d4af37"/>
+    <path d="M262.5 150 L225 145 L225 155 Z" fill="#d4af37"/>
+
+
+</svg>

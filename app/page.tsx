@@ -1,5 +1,6 @@
-import Game from "@/components/Game";
+import Game from "@/components/memory-game/Game";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 
 type Props = {
@@ -45,10 +46,11 @@ export async function generateMetadata(
 }
 export default function Home() {
   return (
-    <div>
+    <section>
       <Suspense fallback={<div>Loading...</div>}>
+        <Link href={'/test'} className='fixed bottom-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-lg '>Test</Link>
         <Game />
       </Suspense>
-    </div>
+    </section>
   );
 }

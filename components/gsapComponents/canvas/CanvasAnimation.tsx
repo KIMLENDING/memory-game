@@ -37,7 +37,7 @@ const CanvasAnimation = () => {
 
         const ctx = canvas.getContext("2d"); // 2D 렌더링 컨텍스트 생성
         if (!ctx) return;
-        let animationFrameId: number;
+        let animationFrameId: number; // 애니메이션 프레임 ID
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         let x = canvas.width / 2; // 원의 초기 x 좌표
@@ -82,7 +82,7 @@ const CanvasAnimation = () => {
             ctx.beginPath(); // 새로운 경로 생성
             ctx.arc(x, y, radius, 0, Math.PI * 2, false); // 원 그리기
             const fillColor = mouseOverRef.current ? "green" : `hsl(${hue}, 100%, 50%)`;
-            gsap.to(ctx, { duration: 0.5, onUpdate: () => { ctx.fillStyle = fillColor } });
+            ctx.fillStyle = fillColor; // 원의 색
             ctx.fill();
             ctx.closePath();
 
@@ -116,12 +116,13 @@ const CanvasAnimation = () => {
             const distance = Math.sqrt((mouseX - x) ** 2 + (mouseY - y) ** 2);
             const isOver = distance < radius;
 
-            if (mouseOverRef.current !== isOver) {
-                mouseOverRef.current = isOver;
+            if (mouseOverRef.current !== isOver) { // 마우스가 원 위에 있는지 여부가 변경되면
 
-                if (isOver) {
+                mouseOverRef.current = isOver; // 마우스가 원 위에 있는지 여부 업데이트
+                if (isOver) { // 마우스가 원 위에 있을 때
                     hoverStartRef.current = Date.now();
                     intervalRef.current = setInterval(() => {
+                        // 마우스가 원 위에 있을 때마다 경과 시간 계산
                         if (hoverStartRef.current !== null) {
                             const elapsedTime = (Date.now() - hoverStartRef.current) / 1000;
                             setHoverTime(elapsedTime);
@@ -131,7 +132,7 @@ const CanvasAnimation = () => {
                     if (hoverStartRef.current !== null) {
                         clearInterval(intervalRef.current!);
                         console.log(`마우스가 ${hoverTime.toFixed(2)}초 동안 원 위에 있었습니다.`);
-                        hoverStartRef.current = null;
+                        hoverStartRef.current = null; // 초기화
                     }
                 }
             }

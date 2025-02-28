@@ -25,7 +25,7 @@ import {
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { useRankStore } from "@/store/rankStore"
 import { useState } from "react"
-import { Input } from "./ui/input"
+import { Input } from "../ui/input"
 import { useRouter } from "next/navigation"
 import { useGameStore } from "@/store/gameStore"
 

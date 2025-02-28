@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from "gsap";
 import { useGameStore } from '@/store/gameStore';
 import { DrawerDialogDemo } from './DrawerDialogDame';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 
 const Game = () => {
