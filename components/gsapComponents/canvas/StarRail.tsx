@@ -70,12 +70,12 @@ const StarRail = () => {
         };
 
         const handleMouseMove = (event: MouseEvent) => {
-            const rect = canvas.getBoundingClientRect();
+            const rect = canvas.getBoundingClientRect(); // 캔버스의 상대적인 위치
             const mouseX = event.clientX - rect.left;
             const mouseY = event.clientY - rect.top;
 
             hoveredIndex = positions.findIndex(({ x, y }) => {
-                const distance = Math.sqrt((x - mouseX) ** 2 + (y - mouseY) ** 2);
+                const distance = Math.sqrt((x - mouseX) ** 2 + (y - mouseY) ** 2); // 두 점 사이의 거리
                 return distance < 125; // 마우스가 링 안에 있는지 확인
             });
         };

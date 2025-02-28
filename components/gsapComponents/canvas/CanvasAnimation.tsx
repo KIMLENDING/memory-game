@@ -29,7 +29,6 @@ const CanvasAnimation = () => {
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const [speed, setSpeed] = useState(2); // 원의 속도
 
-
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -44,8 +43,7 @@ const CanvasAnimation = () => {
         const radius = 50;
         const angle = Math.random() * Math.PI * 2; // 초기 랜덤 방향
         let hue = 0; // 색상 값
-
-
+        let scale = 1; // 크기
         let vx = speed * Math.cos(angle); // x 방향 속도
         let vy = speed * Math.sin(angle); // y 방향 속도
 
@@ -56,6 +54,7 @@ const CanvasAnimation = () => {
             vx = speed * Math.cos(newAngle);
             vy = speed * Math.sin(newAngle);
         }
+
         function updateBall() {
             x += vx;
             y += vy;
@@ -72,18 +71,24 @@ const CanvasAnimation = () => {
             }
         }
 
-        const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // 캔버스 초기화
-
-            hue = (hue + 1) % 360;
-
+        const drawCircle = (targetScale: number) => {
             // 원 그리기
             ctx.beginPath(); // 새로운 경로 생성
-            ctx.arc(x, y, radius, 0, Math.PI * 2, false); // 원 그리기
+
+            ctx.arc(x, y, targetScale, 0, Math.PI * 2, false); // 원 그리기
             const fillColor = mouseOverRef.current ? "green" : `hsl(${hue}, 100%, 50%)`;
             ctx.fillStyle = fillColor; // 원의 색
             ctx.fill();
             ctx.closePath();
+        };
+
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // 캔버스 초기화
+
+            hue = (hue + 1) % 360;
+            const currentRadius = mouseOverRef.current ? 1.2 : 1; // 마우스가 원 위에 있으면 크기 증가
+            scale += (currentRadius - scale) * 0.1; // 크기 애니메이션 적용
+            drawCircle(scale * radius); // 원 그리기
 
             // 사각형 그리기
             ctx.beginPath();
