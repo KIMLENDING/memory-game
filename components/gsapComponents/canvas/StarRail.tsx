@@ -22,11 +22,10 @@ const StarRail = () => {
 
         const positions: { x: number, y: number }[] = []; // 위치 배열
         const getRandomPosition = () => {
-            let x: number, y: number, key: string;
+            let x: number, y: number;
             do {
                 x = Math.random() * (canvas.width - 250) + 125; // 캔버스 범위 내 랜덤 x 좌표
                 y = Math.random() * (canvas.height - 250) + 125; // 캔버스 범위 내 랜덤 y 좌표
-                key = `${Math.floor(x)}-${Math.floor(y)}`;
             } while (positions.some(pos => {
                 const distance = Math.sqrt((pos.x - x) ** 2 + (pos.y - y) ** 2);
                 return distance < 250; // 원이 겹치지 않도록 최소 거리 유지

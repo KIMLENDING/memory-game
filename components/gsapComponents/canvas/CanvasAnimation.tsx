@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
 
 /**
  *  속도 벡터의 기본 개념
@@ -43,7 +42,7 @@ const CanvasAnimation = () => {
         let x = canvas.width / 2; // 원의 초기 x 좌표
         let y = canvas.height / 2; // 원의 초기 y 좌표
         const radius = 50;
-        let angle = Math.random() * Math.PI * 2; // 초기 랜덤 방향
+        const angle = Math.random() * Math.PI * 2; // 초기 랜덤 방향
         let hue = 0; // 색상 값
 
 
@@ -51,8 +50,8 @@ const CanvasAnimation = () => {
         let vy = speed * Math.sin(angle); // y 방향 속도
 
         function applyRandomBounce() {
-            let randomAngle = (Math.random() - 0.5) * (Math.PI / 3); // ±60도 범위의 랜덤 값
-            let newAngle = Math.atan2(vy, vx) + randomAngle; //(vx, vy)가 x축과 이루는 각도 + 랜덤각도 = 새로운 각도
+            const randomAngle = (Math.random() - 0.5) * (Math.PI / 3); // ±60도 범위의 랜덤 값
+            const newAngle = Math.atan2(vy, vx) + randomAngle; //(vx, vy)가 x축과 이루는 각도 + 랜덤각도 = 새로운 각도
 
             vx = speed * Math.cos(newAngle);
             vy = speed * Math.sin(newAngle);
