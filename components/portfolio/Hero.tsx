@@ -29,8 +29,9 @@ const Hero = () => {
         <section
             ref={heroRef}
             id="hero"
-            className="h-screen flex flex-col items-center justify-center text-center px-6 gap-5"
+            className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 gap-5 "
         >
+
             <div className="w-32 h-32 bg-gray-300 rounded-full mb-4"></div> {/* 여기에 프로필 이미지 또는 아이콘 */}
 
             <p className="mt-2 text-3xl font-semibold text-gray-700">
