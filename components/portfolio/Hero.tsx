@@ -29,16 +29,18 @@ const Hero = () => {
         <section
             ref={heroRef}
             id="hero"
-            className="h-screen flex flex-col items-center justify-center text-center px-6"
+            className="h-screen flex flex-col items-center justify-center text-center px-6 gap-5"
         >
             <div className="w-32 h-32 bg-gray-300 rounded-full mb-4"></div> {/* 여기에 프로필 이미지 또는 아이콘 */}
-            <h1 ref={textRef} className="text-5xl font-bold text-gray-800">안녕하세요! </h1>
-            <p className="mt-2 text-2xl text-gray-600">프론트엔드 개발자 김계관 입니다.</p>
-            <p className="mt-2 text-xl text-gray-600">프론트엔드 개발자 김계관 입니다.</p>
+
+            <p className="mt-2 text-3xl font-semibold text-gray-700">
+                빠른 프로토타이핑과 지속적인 개선을 추구하는
+            </p>
+            <p className="mt-2 text-2xl text-gray-600">프론트엔드 개발자 <span className="font-bold text-gray-800">김계관</span> 입니다.</p>
             <a
                 ref={buttonRef}
                 href="#project"
-                className="mt-6 px-6 py-3 bg-primary text-white rounded-full text-lg shadow-md hover:scale-105 transition"
+                className="mt-6 px-8 py-4 bg-primary text-white text-xl font-semibold rounded-full shadow-lg hover:scale-105 transition"
             >
                 프로젝트 보러가기 🚀
             </a>

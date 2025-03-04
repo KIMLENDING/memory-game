@@ -12,6 +12,9 @@ export default {
 			colors: {
 				cream: '#FDF6EC',
 				creamblue: '#A3D5FF',
+				creamaccent: '#FF7F50',
+				darkBlue: '#1E2A38', // 고급스러운 배경용 컬러
+				softGray: '#B0B8C1', // 부드러운 보조 컬러
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				card: {
