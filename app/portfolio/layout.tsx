@@ -112,12 +112,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </nav>
 
             {/* 🌟 모바일 햄버거 메뉴 버튼 */}
-            {/* <button
+            <button
                 className="fixed top-5 right-5 z-30 sm:hidden p-2 bg-black rounded-full"
                 onClick={() => setMenuOpen(!menuOpen)}
             >
                 {menuOpen ? <X size={28} color="white" /> : <Menu size={28} color="white" />}
-            </button> */}
+            </button>
 
             {/* 🌟 모바일 메뉴 */}
             <div
