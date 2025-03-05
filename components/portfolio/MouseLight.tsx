@@ -25,7 +25,7 @@ const MouseLight = () => {
             ref={lightRef}
             className="fixed top-0 left-0 w-[300px] h-[300px] pointer-events-none z-50"
             style={{
-                background: "radial-gradient(circle, rgba(255, 255, 150, 0.8) 20%, rgba(255, 255, 150, 0.3) 50%, rgba(255, 255, 150, 0) 80%)",
+                background: "radial-gradient(circle, rgba(0, 150, 255, 0.8) 20%, rgba(0, 150, 255, 0.5) 50%, rgba(0, 150, 255, 0.2) 80%)",
                 mixBlendMode: "lighten", // 배경을 밝히는 효과
                 borderRadius: "50%",
                 filter: "blur(40px)", // 빛이 퍼지는 느낌
