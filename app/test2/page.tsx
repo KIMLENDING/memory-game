@@ -7,8 +7,8 @@ const page = () => {
                 <div className=' w-full h-[50vh] border-2 border-red-400  bg-blue-400'>
 
                 </div>
-                <div className='absolute w-full h-32 overflow-hidden border-2 border-red-400'>
-                    <div className='absolute w-full h-full left-0 top-0 bg-green-400'></div>
+                <div className='absolute w-full  h-32 overflow-hidden border-2 border-purple-500'>
+                    <div className='absolute w-full h-full  bg-green-400'></div>
                 </div>
 
             </div>
