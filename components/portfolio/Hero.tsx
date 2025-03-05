@@ -13,22 +13,22 @@ const Hero = () => {
         gsap.fromTo(
             heroRef.current,
             { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+            { opacity: 1, y: 0, duration: 1, delay: 1.0, ease: "power2.out" }
         );
         gsap.fromTo(
             textRef.current,
             { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 1, delay: 0.5, ease: "power2.out" }
+            { opacity: 1, y: 0, duration: 1, delay: 1.5, ease: "power2.out" }
         );
         gsap.fromTo(
             textRef2.current,
             { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 1, delay: 1, ease: "power2.out" }
+            { opacity: 1, y: 0, duration: 1, delay: 2, ease: "power2.out" }
         );
         gsap.fromTo(
             buttonRef.current,
             { opacity: 0, scale: 0.8 },
-            { opacity: 1, scale: 1, duration: 1, delay: 1.5, ease: "power2.out" }
+            { opacity: 1, scale: 1, duration: 1, delay: 2.5, ease: "power2.out" }
         );
     }, []);
     useEffect(() => {
@@ -46,7 +46,7 @@ const Hero = () => {
             className="relative h-[50vh] lg:min-h-screen w-full flex flex-col items-start  justify-end text-center py-4 px-6 gap-5 "
         >
 
-            <div className='w-full flex flex-col text-start break-keep break-words text-softGray2 text-xl sm:text-3xl font-semibold space-y-1' ref={textRef}>
+            <div className='w-full flex flex-col text-start break-keep break-words text-softGray2 text-xl sm:text-3xl font-semibold space-y-1 opacity-0' ref={textRef}>
                 <p >
                     안녕하세요!
                 </p>
@@ -57,7 +57,7 @@ const Hero = () => {
                     지속적인 개선을 추구하고 발전하는 개발자
                 </p>
             </div>
-            <div className='w-full flex flex-col sm:flex-row text-start break-keep break-words text-softGray2 text-3xl font-semibold pb-4' ref={textRef2}>
+            <div className='w-full flex flex-col sm:flex-row text-start break-keep break-words text-softGray2 text-3xl font-semibold pb-4 opacity-0' ref={textRef2}>
                 <div className='flex flex-row justify-start items-end text-center'>
                     <div className=" -mx-2 font-bold text-gray-800 text-7xl sm:text-9xl lg:text-12xl ">
                         <div id='name' className='relative'>
