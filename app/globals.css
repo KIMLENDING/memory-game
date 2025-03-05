@@ -108,7 +108,11 @@
     --chart-5: 340 75% 55%
   }
 }
-
+@layer utilities{
+  .text-12xl {
+    @apply text-[12rem] leading-normal;
+  }
+}
 
 
 @layer base {
@@ -118,4 +122,6 @@
   body {
     @apply bg-background text-foreground;
   }
+  
 }
+

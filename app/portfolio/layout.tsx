@@ -23,12 +23,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         gsap.registerPlugin(ScrollTrigger);
 
         sections.forEach((section) => {
+
             ScrollTrigger.create({
                 trigger: `#${section}`,
-                start: "top center",
-                end: "bottom center",
+                start: "top 48%",
+                end: "bottom 48%",
                 onEnter: () => setActiveSection(section),
                 onEnterBack: () => setActiveSection(section),
+                markers: true,
             });
         });
 
@@ -78,14 +80,26 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     }, [menuOpen]);
 
     return (
-        <div className="relative w-full min-h-screen h-full bg-cream">
-            {/* 상단 그라디언트 효과 */}
-            <div className="absolute w-full top-0 h-[10vh] bg-gradient-to-t from-transparent blur-3xl to-yellow-300 rounded-b-full" />
-            <div className="absolute w-full top-0 h-[20vh] bg-gradient-to-t from-transparent blur-3xl to-yellow-300 rounded-b-full" />
-            <div className="absolute w-full top-0 h-[30vh] bg-gradient-to-t from-transparent blur-3xl to-yellow-300 rounded-b-full" />
+        <div className="relative w-full min-h-screen h-full ">
+            {/* 상단 그라디언트 효과 blur-[5vh] lg:blur-[10vh]*/}
+
+            <div>
+                <div className="absolute w-full h-[25vh] lg:h-[50vh] xl:h-[80vh]  left-1/2 -translate-x-1/2 bg-gradient-to-b blur-[5vh] lg:blur-[10vh] from-[#FFF8A9] to-[#FFF8A9] rounded-b-full">
+                </div>
+                <div className="absolute w-full h-[25vh] lg:h-[50vh] xl:h-[80vh]  left-1/2 -translate-x-1/2 rounded-b-full">
+                    <div className="absolute w-[77%] h-[77%]  left-1/2 -translate-x-1/2 bg-gradient-to-b blur-3xl  from-[#FDF074] to-[#FFF8A9] rounded-b-full" />
+                </div>
+                <div className="absolute w-full h-[25vh] lg:h-[50vh] xl:h-[80vh]  left-1/2 -translate-x-1/2 rounded-b-full">
+                    <div className="absolute w-[77%] h-[77%]  left-1/2 -translate-x-1/2  rounded-b-full" >
+                        <div className="absolute w-[77%] h-[77%]  left-1/2 -translate-x-1/2 bg-gradient-to-b blur-2xl  from-yellow-400 to-[#FDF074]  rounded-b-full" />
+                    </div>
+                </div>
+            </div>
+
+
 
             {/* 데스크탑 네비게이션 */}
-            <nav className="fixed top-5 left-0 w-full text-softGray font-bold z-20 sm:flex sm:justify-center sm:items-center sm:gap-5 text-nowrap hidden">
+            <nav className="fixed top-5 left-0 w-full text-softGray font-bold z-20 sm:flex sm:justify-center sm:items-center sm:gap-5 text-nowrap hidden ">
                 <div
                     ref={navRef}
                     className="relative flex justify-between items-center gap-2 px-4 py-1 mx-4 bg-black rounded-full sm:w-fit"

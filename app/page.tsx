@@ -48,7 +48,11 @@ export default function Home() {
   return (
     <section>
       <Suspense fallback={<div>Loading...</div>}>
-        <Link href={'/test'} className='fixed bottom-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-lg '>Test</Link>
+        <div className='fixed bottom-5 left-5 p-3 space-x-3'>
+
+          <Link href={'/test'} className=' bg-blue-500 text-white p-3 rounded-full shadow-lg '>Test</Link>
+          <Link href={'/portfolio'} className=' bg-blue-500 text-white p-3 rounded-full shadow-lg '>Portfolio</Link>
+        </div>
         <Game />
       </Suspense>
     </section>
