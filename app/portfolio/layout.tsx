@@ -5,7 +5,7 @@ import React, { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X } from "lucide-react"; // 햄버거 메뉴 & 닫기 아이콘
-import { CustomEase } from "gsap/all";
+
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
@@ -82,20 +82,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className="relative w-full min-h-screen h-full ">
             {/* 상단 그라디언트 효과 blur-[5vh] lg:blur-[10vh]*/}
-
-            {/* <div>
-                <div className="absolute w-full h-[25vh] lg:h-[50vh] xl:h-[80vh]  left-1/2 -translate-x-1/2 bg-gradient-to-b blur-[5vh] lg:blur-[10vh] from-[#FFF8A9] to-[#FFF8A9] rounded-b-full">
-                </div>
-                <div className="absolute w-full h-[25vh] lg:h-[50vh] xl:h-[80vh]  left-1/2 -translate-x-1/2 rounded-b-full">
-                    <div className="absolute w-[77%] h-[77%]  left-1/2 -translate-x-1/2 bg-gradient-to-b blur-3xl  from-[#FDF074] to-[#FFF8A9] rounded-b-full" />
-                </div>
-                <div className="absolute w-full h-[25vh] lg:h-[50vh] xl:h-[80vh]  left-1/2 -translate-x-1/2 rounded-b-full">
-                    <div className="absolute w-[77%] h-[77%]  left-1/2 -translate-x-1/2  rounded-b-full" >
-                        <div className="absolute w-[77%] h-[77%]  left-1/2 -translate-x-1/2 bg-gradient-to-b blur-2xl  from-yellow-400 to-[#FDF074]  rounded-b-full" />
-                    </div>
-                </div>
-            </div> */}
-
 
 
             {/* 데스크탑 네비게이션 */}

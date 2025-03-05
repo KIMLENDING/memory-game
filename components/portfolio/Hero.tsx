@@ -1,7 +1,8 @@
 'use client';
-import React, { use, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
+import SignatureAnimation from './SignatureAnimtion';
 
 const Hero = () => {
     const heroRef = useRef(null);
@@ -73,6 +74,7 @@ const Hero = () => {
                                     <Image height={1000} width={1000} alt='img' src={'/Tribbie3.webp'} className='rounded-3xl'></Image>
                                 </div>
                             </div>
+                            <SignatureAnimation />
                         </div>
                     </div>
                     <div className='lg:pb-10 '>입니다. </div>
