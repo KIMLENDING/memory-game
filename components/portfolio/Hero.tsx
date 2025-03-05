@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
-import SignatureAnimation from './SignatureAnimtion';
 
 const Hero = () => {
     const heroRef = useRef(null);
