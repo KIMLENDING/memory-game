@@ -80,7 +80,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     }, [menuOpen]);
 
     return (
-        <div className="relative w-full min-h-screen h-full ">
+        <div className="relative w-screen min-h-screen  ">
             {/* 상단 그라디언트 효과 blur-[5vh] lg:blur-[10vh]*/}
 
 
@@ -112,12 +112,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </nav>
 
             {/* 🌟 모바일 햄버거 메뉴 버튼 */}
-            <button
+            {/* <button
                 className="fixed top-5 right-5 z-30 sm:hidden p-2 bg-black rounded-full"
                 onClick={() => setMenuOpen(!menuOpen)}
             >
                 {menuOpen ? <X size={28} color="white" /> : <Menu size={28} color="white" />}
-            </button>
+            </button> */}
 
             {/* 🌟 모바일 메뉴 */}
             <div

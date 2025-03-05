@@ -57,25 +57,25 @@ const Hero = () => {
                     지속적인 개선을 추구하고 발전하는 개발자
                 </p>
             </div>
-            <div className='w-full flex flex-col  text-start break-keep break-words text-softGray2 text-3xl font-semibold pb-4 opacity-0' ref={textRef2}>
-                <div className='flex flex-row justify-start items-end text-center'>
+            <div className='w-full flex flex-col   text-softGray2 text-3xl font-semibold pb-4 opacity-0' ref={textRef2}>
+                <div className='flex sm:flex-row flex-col  justify-start sm:items-end items-start text-center'>
                     <div className=" -mx-2 font-bold text-gray-800 text-7xl sm:text-9xl lg:text-12xl ">
-                        <div id='name' className='relative'>
+                        <p id='name' className='relative'>
                             김계관
-                            <div id='pop-image' className='max-lg:hidden absolute w-full bottom-0 flex flex-row justify-between items-center '>
-                                <div className='flex-1  bottom-0 opacity-0 hover:opacity-100 hover:scale-110 transition rotate-6'>
+                            <span id='pop-image' className='max-lg:hidden absolute w-full bottom-0 flex flex-row justify-between items-center '>
+                                <span className='flex-1  bottom-0 opacity-0 hover:opacity-100 hover:scale-110 transition rotate-6'>
                                     <Image height={500} width={500} alt='img' src={'/Hyacine.webp'} className='rounded-3xl'></Image>
-                                </div>
-                                <div className='flex-1  opacity-0 hover:opacity-100 hover:scale-110 transition rotate-12'>
+                                </span>
+                                <span className='flex-1  opacity-0 hover:opacity-100 hover:scale-110 transition rotate-12'>
                                     <Image height={1000} width={1000} alt='img' src={'/Castorice.webp'} className='rounded-3xl'></Image>
-                                </div>
-                                <div className='flex-1 opacity-0 hover:opacity-100 hover:scale-110 transition -rotate-12'>
+                                </span>
+                                <span className='flex-1 opacity-0 hover:opacity-100 hover:scale-110 transition -rotate-12'>
                                     <Image height={1000} width={1000} alt='img' src={'/Tribbie3.webp'} className='rounded-3xl'></Image>
-                                </div>
-                            </div>
-                        </div>
+                                </span>
+                            </span>
+                        </p>
                     </div>
-                    <div className='lg:pb-10 '>입니다. </div>
+                    <p className='lg:pb-10 '>입니다. </p>
                 </div>
             </div>
 

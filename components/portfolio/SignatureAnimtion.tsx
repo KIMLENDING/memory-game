@@ -71,26 +71,28 @@ const SignatureAnimation = () => {
     }, [svgContent, isDesktop]); // 🔥 SVG가 로드된 후 실행
 
     return (
-        <div className="absolute w-full h-fit  ">
-            {/* SVG 로드 후 표시 */}
-            <div ref={sectionRef} className="relative w-full h-full ">
-                {/* SVG 로드 후 표시 */}
-                {svgContent && (
-                    <div
-                        ref={svgContainerRef}
-                        dangerouslySetInnerHTML={{ __html: svgContent }}
-                        className={`absolute w-full h-full left-0 top-0 max-md:scale-75 max-md:-translate-x-16 max-sm:scale-50 max-sm:-translate-x-1/4`}
-                        style={{ maxWidth: "100%", maxHeight: "100%" }}
-                    />
-                )}
 
-                {/* 🖊️ 펜 아이콘 (선을 따라 움직임) */}
-                {/* <div
+
+
+        <div ref={sectionRef} className="absolute w-full h-32 overflow-hidden">
+
+            {svgContent && (
+                <div
+                    ref={svgContainerRef}
+                    dangerouslySetInnerHTML={{ __html: svgContent }}
+
+                    className={`absolute w-full h-full left-0 top-0 max-md:scale-75 max-md:-translate-x-16 max-sm:scale-50 max-sm:-translate-x-1/4`}
+                    style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
+                />
+            )}
+
+            {/* 🖊️ 펜 아이콘 (선을 따라 움직임) */}
+            {/* <div
             ref={penRef}
             className="w-6 h-6 rounded-full absolute"
             /> */}
-            </div>
         </div>
+
     );
 };
 
