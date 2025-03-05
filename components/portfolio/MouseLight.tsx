@@ -2,10 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useMediaQuery } from '@/hooks/use-media-query'
 
 const MouseLight = () => {
     const lightRef = useRef<HTMLDivElement>(null);
-
+    const isDesktop = useMediaQuery("(min-width: 768px)");
     useEffect(() => {
         const moveLight = (e: MouseEvent) => {
             gsap.to(lightRef.current, {
@@ -19,8 +20,9 @@ const MouseLight = () => {
         window.addEventListener("mousemove", moveLight);
         return () => window.removeEventListener("mousemove", moveLight);
     }, []);
-
+    if (!isDesktop) return null;
     return (
+
         <div
             ref={lightRef}
             className="fixed top-0 left-0 w-[300px] h-[300px] pointer-events-none z-50"

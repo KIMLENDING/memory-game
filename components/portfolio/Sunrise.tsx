@@ -18,7 +18,7 @@ const SunriseEffect = () => {
     }, []);
 
     return (
-        <div className="absolute top-0 w-full min-h-screen">
+        <div className="absolute top-0 w-full min-h-screen -z-40">
             {/* 기존 밤 배경 */}
             <div
                 ref={bgRef}
