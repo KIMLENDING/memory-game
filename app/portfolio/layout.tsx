@@ -30,7 +30,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 end: "bottom 48%",
                 onEnter: () => setActiveSection(section),
                 onEnterBack: () => setActiveSection(section),
-                markers: true,
+                markers: false,
             });
         });
 

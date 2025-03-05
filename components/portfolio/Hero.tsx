@@ -58,7 +58,7 @@ const Hero = () => {
                     지속적인 개선을 추구하고 발전하는 개발자
                 </p>
             </div>
-            <div className='w-full flex flex-col sm:flex-row text-start break-keep break-words text-softGray2 text-3xl font-semibold pb-4 opacity-0' ref={textRef2}>
+            <div className='w-full flex flex-col  text-start break-keep break-words text-softGray2 text-3xl font-semibold pb-4 opacity-0' ref={textRef2}>
                 <div className='flex flex-row justify-start items-end text-center'>
                     <div className=" -mx-2 font-bold text-gray-800 text-7xl sm:text-9xl lg:text-12xl ">
                         <div id='name' className='relative'>
@@ -74,12 +74,14 @@ const Hero = () => {
                                     <Image height={1000} width={1000} alt='img' src={'/Tribbie3.webp'} className='rounded-3xl'></Image>
                                 </div>
                             </div>
-                            <SignatureAnimation />
                         </div>
                     </div>
                     <div className='lg:pb-10 '>입니다. </div>
                 </div>
             </div>
+
+
+
 
             {/* <a
                 ref={buttonRef}
