@@ -5,6 +5,7 @@ import React, { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X } from "lucide-react"; // 햄버거 메뉴 & 닫기 아이콘
+import SmoothScroll from "@/hooks/SmoothScroll";
 
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -142,8 +143,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     ))}
                 </div>
             </div>
-
-            {children}
+            <SmoothScroll>
+                {children}
+            </SmoothScroll>
         </div>
     );
 };

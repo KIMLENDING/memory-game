@@ -18,7 +18,7 @@ const SunriseEffect = () => {
     }, []);
 
     return (
-        <div className="absolute top-0 w-full min-h-screen -z-40">
+        <div className="absolute top-0 w-full min-h-screen -z-0">
             {/* 기존 밤 배경 */}
             <div
                 ref={bgRef}
@@ -34,7 +34,7 @@ const SunriseEffect = () => {
                 className="absolute top-0 w-full h-full opacity-0 transition-all"
                 style={{
                     background:
-                        "linear-gradient(to bottom, #FFDB28 , #FFF58E ,#ffffff, #ffffff )", // 아침 배경
+                        "linear-gradient(to bottom, #005900 , #43ba43 ,#adffad, #adffad )", // 아침 배경
                 }}
             />
         </div>
