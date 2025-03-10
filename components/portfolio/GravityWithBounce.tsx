@@ -55,7 +55,9 @@ export default function GravityWithBounce() {
                 type: "x,y",
                 bounds: container,
                 onDragEnd: function () {
-                    !isLoad && isLoadSet(true);
+                    if (!isLoad) {
+                        isLoadSet(true);
+                    }
                     applyGravity(logo, container);
                 },
             });
@@ -68,10 +70,10 @@ export default function GravityWithBounce() {
         }
 
         function applyGravity(element: SVGImageElement, container: SVGGraphicsElement) {
-            const [x, y] = getRelativePosition(element, container);
+            const position = getRelativePosition(element, container);
             const iconBounds = element.getBBox();
             const maxDrop = containerBounds.height - iconBounds.height;
-            const dropDistance = maxDrop - y - 1;
+            const dropDistance = maxDrop - position[1] - 1;
 
             gsap.to(element, {
                 y: `+=${dropDistance}`,
