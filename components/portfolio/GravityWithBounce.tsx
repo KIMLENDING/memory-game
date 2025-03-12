@@ -12,11 +12,13 @@ export default function GravityWithBounce() {
 
     // ✅ 여러 개의 SVG 아이콘
     const svgImages = [
-        "/javascript.svg",
-        "/Tailwind.svg",
-        "/mongodb.svg",
-        "/logo-react.svg",
-        "/nextjs.svg",
+        "/svg/inbox/javascript.svg",
+        "/svg/inbox/tailwind.svg",
+        "/svg/inbox/mongodb.svg",
+        "/svg/inbox/react.svg",
+        "/svg/inbox/nextjs.svg",
+        "/svg/inbox/zustand.svg",
+        "/svg/inbox/typescript.svg",
     ];
 
     // ✅ Hydration 오류 방지를 위해 상태로 관리 (초기 값은 null)
@@ -105,8 +107,8 @@ export default function GravityWithBounce() {
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
-            width="300"
-            height="300"
+            width="100%"
+            height="100%"
             viewBox="0 0 300 300"
         >
             {/* ✅ 컨테이너 크기에 맞게 path의 d 값 수정 */}
@@ -125,7 +127,7 @@ export default function GravityWithBounce() {
                 Z"
                 // 300x300에 맞게 사각형 그리기
                 fill="none"
-                stroke="black"
+                stroke="white"
                 strokeWidth="5"
             />
 

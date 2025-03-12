@@ -6,13 +6,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X } from "lucide-react"; // 햄버거 메뉴 & 닫기 아이콘
 import SmoothScroll from "@/hooks/SmoothScroll";
+import Link from "next/link";
 
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
-    const sections = ["hero", "project", "skill", "about"];
-    const sectionsKr = ["소개", "프로젝트", "기술", "연락"];
-    const [activeSection, setActiveSection] = useState("hero");
+    const sections = ['intro', "hero", "project", "skill", "about"];
+    const sectionsKr = ['인트로', "소개", "프로젝트", "기술", "연락"];
+    const [activeSection, setActiveSection] = useState("intro");
     const [menuOpen, setMenuOpen] = useState(false);
     const navRef = useRef<HTMLDivElement>(null);
     const highlightRef = useRef<HTMLDivElement>(null);
@@ -31,7 +32,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 end: "bottom 48%",
                 onEnter: () => setActiveSection(section),
                 onEnterBack: () => setActiveSection(section),
-                markers: false,
+                // markers: true,
             });
         });
 
@@ -42,10 +43,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         if (!navRef.current || !highlightRef.current) return;
 
         const navLinks = navRef.current.querySelectorAll("a");
+        console.log(activeSection)
         const activeIndex = sections.indexOf(activeSection);
         if (activeIndex === -1) return;
 
         const targetLink = navLinks[activeIndex];
+        console.log(targetLink);
         if (!targetLink) return;
 
         gsap.to(highlightRef.current, {
@@ -91,7 +94,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     ref={navRef}
                     className="relative flex justify-between items-center gap-2 px-4 py-1 mx-4 bg-black rounded-full sm:w-fit"
                 >
-                    <Image alt="star" src="/circle.svg" height={30} width={30} />
+
                     <div
                         ref={highlightRef}
                         className="absolute top-0 left-0 bg-yellow-300/40 rounded-full h-10 transition-all"
@@ -106,7 +109,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                                 : "hover:text-white"
                                 }`}
                         >
-                            {sectionsKr[index]}
+                            {section === 'intro' ? <Image alt="star" src="/circle.svg" height={30} width={30} /> : sectionsKr[index]}
                         </a>
                     ))}
                 </div>

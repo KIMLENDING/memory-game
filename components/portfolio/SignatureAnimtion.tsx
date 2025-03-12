@@ -74,15 +74,14 @@ const SignatureAnimation = () => {
 
 
 
-        <div ref={sectionRef} className="">
+        <div ref={sectionRef} className="w-full h-full flex items-center justify-center">
 
             {svgContent && (
                 <div
                     ref={svgContainerRef}
                     dangerouslySetInnerHTML={{ __html: svgContent }}
+                    className='w-full h-full object-contain'
 
-                    className={` `}
-                    style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
                 />
             )}
 

@@ -4,11 +4,10 @@ import { gsap } from 'gsap';
 
 import GravityWithBounce from './GravityWithBounce';
 
+
 const Hero = () => {
     const heroRef = useRef(null);
     const textRef = useRef(null);
-    const textRef2 = useRef(null);
-    const buttonRef = useRef(null);
 
     useEffect(() => {
         gsap.fromTo(
@@ -21,16 +20,8 @@ const Hero = () => {
             { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 1, delay: 1.5, ease: "power2.out" }
         );
-        gsap.fromTo(
-            textRef2.current,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 1, delay: 2, ease: "power2.out" }
-        );
-        gsap.fromTo(
-            buttonRef.current,
-            { opacity: 0, scale: 0.8 },
-            { opacity: 1, scale: 1, duration: 1, delay: 2.5, ease: "power2.out" }
-        );
+
+
     }, []);
 
 
@@ -38,9 +29,13 @@ const Hero = () => {
         <section
             ref={heroRef}
             id="hero"
-            className="relative h-[50vh] lg:min-h-screen w-full flex flex-col items-start  justify-end text-center py-4 px-6 gap-5 "
+            className="flex flex-col items-center w-full justify-center min-h-screen px-4 sm:px-6 lg:px-8 border-2 border-red-300"
         >
-            < GravityWithBounce />
+
+
+            <div className='max-w-[300px] max-h-[300px] w-full h-full flex items-center justify-center'>
+                <GravityWithBounce />
+            </div>
 
         </section>
     );
