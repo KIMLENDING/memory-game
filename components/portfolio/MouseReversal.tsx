@@ -10,6 +10,7 @@ const MouseReversal = () => {
     const isDesktop = useMediaQuery('(min-width: 768px)');
     useEffect(() => {
         const moveLight = (e: MouseEvent) => {
+            if (!lightRef.current) return;
             gsap.to(lightRef.current, {
                 x: e.clientX - 15, // 마우스 위치 중심 정렬
                 y: e.clientY - 15,

@@ -97,7 +97,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
                     <div
                         ref={highlightRef}
-                        className="absolute top-0 left-0 bg-yellow-300/40 rounded-full h-10 transition-all"
+                        className="absolute top-0 left-0 bg-[#228b22]  opacity-60 rounded-full h-10 transition-all"
                         style={{ top: "50%", transform: "translateY(-50%)" }}
                     />
                     {sections.map((section, index) => (
@@ -105,7 +105,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                             key={section}
                             href={`#${section}`}
                             className={`relative transition-colors duration-300 text-xl px-4 py-2 rounded-full ${pathname === "/portfolio" && activeSection === section
-                                ? "text-yellow-300"
+                                ? "text-[#00ff00]"
                                 : "hover:text-white"
                                 }`}
                         >

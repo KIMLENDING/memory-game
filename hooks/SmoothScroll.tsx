@@ -25,7 +25,7 @@ export default function SmoothScroll({ children }: {
                 wheelMultiplier: 2.8,
                 touchMultiplier: 2.2,
             }}
-        ><div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+        ><div className="fixed top-0 left-0 w-full h-2 bg-gray-200 z-50">
                 <div
                     className="h-full bg-green-500 transition-none"
                     style={{ width: `${scrollProgress}%` }}
