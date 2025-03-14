@@ -70,8 +70,8 @@ const Intro = () => {
             <div id='커튼' className='absolute top-0 left-0 flex flex-col w-full min-h-screen bg-green-500 ' />
             <div className="mt-20 flex justify-center w-full gap-2 md:gap-4 px-4 pointer-events-none">
                 <span id="t1" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>F</span>
-                <span id="t2" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>o</span>
-                <span id="t3" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>r</span>
+                <span id="t2" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>r</span>
+                <span id="t3" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>o</span>
                 <span id="t4" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>n</span>
                 <span id="t5" className={`font-semibold ${doto.className} `} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>t</span>
                 <span id="t6" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>-</span>
