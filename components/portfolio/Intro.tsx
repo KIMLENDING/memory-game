@@ -69,7 +69,7 @@ const Intro = () => {
 
         const timeline = gsap.timeline({ repeat: -1, delay: 4 }); // 무한 반복
 
-        textRefs.current.forEach((text, _) => {
+        textRefs.current.forEach((text) => {
             timeline.to(text, {
                 opacity: 1,
                 y: 0,
