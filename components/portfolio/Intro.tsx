@@ -1,4 +1,4 @@
-import React, { use, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { Doto } from 'next/font/google';
 import Link from 'next/link';
