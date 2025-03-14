@@ -65,11 +65,11 @@ const Intro = () => {
     useEffect(() => {
         if (!textRefs.current.length) return;
 
-        gsap.set(textRefs.current, { opacity: 0, y: 50 });
+        gsap.set(textRefs.current, { opacity: 0, y: 50, });
 
-        const timeline = gsap.timeline({ repeat: -1 }); // 무한 반복
+        const timeline = gsap.timeline({ repeat: -1, delay: 4 }); // 무한 반복
 
-        textRefs.current.forEach((text, index) => {
+        textRefs.current.forEach((text, _) => {
             timeline.to(text, {
                 opacity: 1,
                 y: 0,
@@ -80,7 +80,7 @@ const Intro = () => {
                 y: -50,
                 duration: 1,
                 ease: 'power2.in',
-                delay: 2,
+                delay: 3
             });
         });
     }, []);
@@ -108,14 +108,14 @@ const Intro = () => {
                 <span id="t9" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>d</span>
             </div>
             <div className='relative mt-4 sm:mt-10 p-4 w-full h-full flex-1 flex flex-col items-center justify-center pointer-events-auto text-white'>
-                <p ref={(el) => { textRefs.current[0] = el }} className="absolute  px-4 " style={{ fontSize: 'clamp(1rem, 3vw, 3vh)', }} >
+                <p ref={(el) => { textRefs.current[0] = el }} className="absolute  px-4 opacity-0" style={{ fontSize: 'clamp(1rem, 3vw, 3vh)', }} >
                     <span>웹을 그저 </span>
                     <span className='sm:text-3xl text-xl text-[#00ff00] text-nowrap  '>'보는 것'</span>
                     <span >이 아닌, </span>
                     <span className='sm:text-3xl text-xl text-[#00ff00] text-nowrap'>'느낄 수 있는 경험'</span>
                     <span>으로 만들고 싶습니다.</span>
                 </p>
-                <p ref={(el) => { textRefs.current[1] = el }} className="absolute  px-4" style={{ fontSize: 'clamp(1rem, 3vw, 3vh)', }}>
+                <p ref={(el) => { textRefs.current[1] = el }} className="absolute  px-4 opacity-0" style={{ fontSize: 'clamp(1rem, 3vw, 3vh)', }}>
                     작은 움직임 하나까지 고민하며,
                     더 좋은 <span className='sm:text-3xl text-xl text-[#00ff00] text-nowrap'>사용자 경험</span>을 고민하는 개발자가 되겠습니다.</p>
             </div>
