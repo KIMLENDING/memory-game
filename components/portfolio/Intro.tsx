@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { Doto } from 'next/font/google';
-import DeveloperText from './t';
-import SplitType from 'split-type';
+
+// import SplitType from 'split-type';
 
 const doto = Doto({ weight: '800', subsets: ['latin'] });
 const Intro = () => {
