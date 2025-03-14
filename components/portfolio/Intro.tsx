@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import React, { use, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { Doto } from 'next/font/google';
-
-// import SplitType from 'split-type';
+import Link from 'next/link';
 
 const doto = Doto({ weight: '800', subsets: ['latin'] });
 const Intro = () => {
@@ -85,6 +84,14 @@ const Intro = () => {
         });
     }, []);
 
+    useEffect(() => {
+        const github = document.getElementById('github');
+        if (!github) return;
+        gsap.set(github, { opacity: 0, y: 50 });
+
+        gsap.to(github, { opacity: 1, y: 0, duration: 1, delay: 5, ease: 'power2.out' });
+    }, []);
+
 
     return (
         <section id='intro' className='w-full min-h-screen relative flex flex-col items-center text-black transparent pointer-events-none '>
@@ -107,7 +114,7 @@ const Intro = () => {
                 <span id="t8" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>n</span>
                 <span id="t9" className={`font-semibold ${doto.className}`} style={{ fontSize: 'clamp(1rem, 12vw, 20vh)', }}>d</span>
             </div>
-            <div className='relative mt-4 sm:mt-10 p-4 w-full h-full flex-1 flex flex-col items-center justify-center pointer-events-auto text-white'>
+            <div className='relative mt-4 sm:mt-10 p-4 w-full h-full flex-[2] md:flex-1  flex flex-col items-center justify-center pointer-events-auto text-white'>
                 <p ref={(el) => { textRefs.current[0] = el }} className="absolute  px-4 opacity-0" style={{ fontSize: 'clamp(1rem, 3vw, 3vh)', }} >
                     <span>웹을 그저 </span>
                     <span className='sm:text-3xl text-xl text-[#00ff00] text-nowrap  '>보는 것</span>
@@ -118,6 +125,20 @@ const Intro = () => {
                 <p ref={(el) => { textRefs.current[1] = el }} className="absolute  px-4 opacity-0" style={{ fontSize: 'clamp(1rem, 3vw, 3vh)', }}>
                     작은 움직임 하나까지 고민하며,
                     더 좋은 <span className='sm:text-3xl text-xl text-[#00ff00] text-nowrap'>사용자 경험</span>을 고민하는 개발자가 되겠습니다.</p>
+            </div>
+            <div className='flex flex-col flex-1 pointer-events-auto  '>
+
+
+
+                <Link id='github' href={'https://github.com/KIMLENDING'}
+                    className="text-2xl text-[#00ff7f] opacity-0 relative  font-medium py-2 px-4 transition-all ease-in-out duration-300 
+  hover:text-white after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-black 
+  after:transition-all after:ease-in-out after:duration-300 after:mix-blend-difference hover:after:h-full"
+                >
+                    GitHub
+                </Link>
+
+
             </div>
         </section>
     )
