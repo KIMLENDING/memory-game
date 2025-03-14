@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import { Doto } from 'next/font/google';
 import Link from 'next/link';
 
-const doto = Doto({ weight: '800', subsets: ['latin'] });
+const doto = Doto({ weight: ['600', '800'], subsets: ['latin'] });
 const Intro = () => {
     const devRef = useRef<HTMLDivElement>(null);
     const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
@@ -62,12 +62,10 @@ const Intro = () => {
     }, []);
 
     useEffect(() => {
+        // 텍스트 애니메이션 (위로 올라가고 사라지기 아래에서 나타나기기) 반복
         if (!textRefs.current.length) return;
-
         gsap.set(textRefs.current, { opacity: 0, y: 50, });
-
         const timeline = gsap.timeline({ repeat: -1, delay: 4 }); // 무한 반복
-
         textRefs.current.forEach((text) => {
             timeline.to(text, {
                 opacity: 1,
@@ -85,6 +83,7 @@ const Intro = () => {
     }, []);
 
     useEffect(() => {
+        // GitHub 링크 애니메이션
         const github = document.getElementById('github');
         if (!github) return;
         gsap.set(github, { opacity: 0, y: 50 });
@@ -131,9 +130,10 @@ const Intro = () => {
 
 
                 <Link id='github' href={'https://github.com/KIMLENDING'}
-                    className="text-2xl text-[#00ff7f] opacity-0 relative  font-medium py-2 px-4 transition-all ease-in-out duration-300 
-  hover:text-white after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-black 
-  after:transition-all after:ease-in-out after:duration-300 after:mix-blend-difference hover:after:h-full"
+                    className={`  text-[#32cd32] opacity-0 relative py-2 px-4 transition-all ease-in-out duration-300 
+                    hover:text-white after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-black 
+                    after:transition-all after:ease-in-out after:duration-300 after:mix-blend-difference hover:after:h-full ${doto.className} after:rounded-lg`}
+                    style={{ fontSize: 'clamp(3rem, 5vw, 8vh)' }}
                 >
                     GitHub
                 </Link>
