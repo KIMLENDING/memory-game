@@ -110,9 +110,9 @@ const Intro = () => {
             <div className='relative mt-4 sm:mt-10 p-4 w-full h-full flex-1 flex flex-col items-center justify-center pointer-events-auto text-white'>
                 <p ref={(el) => { textRefs.current[0] = el }} className="absolute  px-4 opacity-0" style={{ fontSize: 'clamp(1rem, 3vw, 3vh)', }} >
                     <span>웹을 그저 </span>
-                    <span className='sm:text-3xl text-xl text-[#00ff00] text-nowrap  '>'보는 것'</span>
+                    <span className='sm:text-3xl text-xl text-[#00ff00] text-nowrap  '>보는 것</span>
                     <span >이 아닌, </span>
-                    <span className='sm:text-3xl text-xl text-[#00ff00] text-nowrap'>'느낄 수 있는 경험'</span>
+                    <span className='sm:text-3xl text-xl text-[#00ff00] text-nowrap'>느낄 수 있는 경험</span>
                     <span>으로 만들고 싶습니다.</span>
                 </p>
                 <p ref={(el) => { textRefs.current[1] = el }} className="absolute  px-4 opacity-0" style={{ fontSize: 'clamp(1rem, 3vw, 3vh)', }}>
