@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X } from "lucide-react"; // 햄버거 메뉴 & 닫기 아이콘
 import SmoothScroll from "@/hooks/SmoothScroll";
-import Link from "next/link";
 
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -48,13 +47,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         if (activeIndex === -1) return;
 
         const targetLink = navLinks[activeIndex];
-        console.log(targetLink);
+        console.log(targetLink.href.split("#")[1]);
         if (!targetLink) return;
 
         gsap.to(highlightRef.current, {
+            backgroundColor: targetLink.href.split("#")[1] === 'intro' ? "transparent" : "",
             x: targetLink.offsetLeft,
             width: targetLink.offsetWidth,
-            duration: 0.5,
+            duration: 0.1,
             ease: "expo.out",
         });
     }, [activeSection]);
