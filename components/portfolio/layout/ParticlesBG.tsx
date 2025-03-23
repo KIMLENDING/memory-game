@@ -59,7 +59,7 @@ const ParticlesBG = () => {
                         quantity: 4,
                     },
                     repulse: {
-                        distance: 200,
+                        distance: 100,
                         duration: 0.4,
                     },
                 },
@@ -157,7 +157,6 @@ const ParticlesBG = () => {
             <div className="fixed top-0 w-full min-h-screen -z-0 ">
                 <div className="absolute top-0 w-full h-full transition-all bg-black" />
                 <Particles
-
                     id="tsparticles"
                     className=" absolute inset-0"
                     particlesLoaded={particlesLoaded}

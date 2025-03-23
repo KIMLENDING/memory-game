@@ -4,7 +4,7 @@ import { Doto } from 'next/font/google';
 import Link from 'next/link';
 
 const doto = Doto({ weight: ['600', '800'], subsets: ['latin'] });
-const Intro = () => {
+const IntroSection = () => {
     const devRef = useRef<HTMLDivElement>(null);
     const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
     useEffect(() => {
@@ -25,7 +25,7 @@ const Intro = () => {
             .fromTo("#t1", { yPercent: 50, opacity: 0 }, { yPercent: 0, opacity: 1, y: 0, duration: 0.5, delay: 0.2 })
             .fromTo("#t3", { yPercent: 50, opacity: 0 }, { yPercent: 0, opacity: 1, y: 0, duration: 0.5 }, '-=0.5')
             .fromTo("#t5", { yPercent: 50, opacity: 0 }, { yPercent: 0, opacity: 1, y: 0, duration: 0.5 }, '-=0.5')
-            .fromTo("#t7", { yPercent: 50, opacity: 0 }, { yPercent: 0, opacity: 1, y: 0, duration: 0.5 }, '-=0.5')
+            .fromTo("#t7", { yPercent: 50, opacity: 0 }, { yPercent: 5, opacity: 1, y: 0, duration: 0.5 }, '-=0.5')
             .fromTo("#t9", { yPercent: 50, opacity: 0 }, { yPercent: 0, opacity: 1, y: 0, duration: 0.5 }, '-=0.5')
             .fromTo("#t2", { y: vh / 2, opacity: 0 }, { yPercent: 10, opacity: 1, duration: 0.5, delay: 0.5 }, '-=0.5')
             .fromTo("#t4", { y: vh / 2, opacity: 0 }, { yPercent: 10, opacity: 1, duration: 0.5 }, '-=0.5')
@@ -144,4 +144,4 @@ const Intro = () => {
     )
 }
 
-export default Intro
+export default IntroSection

@@ -10,8 +10,8 @@ import SmoothScroll from "@/hooks/SmoothScroll";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
-    const sections = ['intro', "hero", "project", "skill", "about"];
-    const sectionsKr = ['인트로', "소개", "프로젝트", "기술", "연락"];
+    const sections = ['intro', "skill", "project", "about"];
+    const sectionsKr = ['인트로', "기술", "프로젝트", "연락"];
     const [activeSection, setActiveSection] = useState("intro");
     const [menuOpen, setMenuOpen] = useState(false);
     const navRef = useRef<HTMLDivElement>(null);
@@ -55,7 +55,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             x: targetLink.offsetLeft,
             width: targetLink.offsetWidth,
             duration: 0.1,
-            ease: "expo.out",
+            ease: "power2.out",
         });
     }, [activeSection]);
 
@@ -109,7 +109,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                                 : "hover:text-white"
                                 }`}
                         >
-                            {section === 'intro' ? <Image alt="star" src="/circle.svg" height={30} width={30} /> : sectionsKr[index]}
+                            {section === 'intro' ? <Image alt="star" src="/circle.svg" height={30} width={30} /> : sections[index]}
                         </a>
                     ))}
                 </div>
@@ -141,7 +141,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                                 }`}
                             onClick={() => setMenuOpen(false)} // 클릭 시 메뉴 닫기
                         >
-                            {sectionsKr[index]}
+                            {sections[index]}
                         </a>
                     ))}
                 </div>

@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
-import GravityWithBounce from './GravityWithBounce';
+import GravityWithBounce from './example/GravityWithBounce';
 
 
 const Hero = () => {
