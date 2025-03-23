@@ -11,7 +11,6 @@ import SmoothScroll from "@/hooks/SmoothScroll";
 const Layout = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
     const sections = ['intro', "skill", "project", "about"];
-    const sectionsKr = ['인트로', "기술", "프로젝트", "연락"];
     const [activeSection, setActiveSection] = useState("intro");
     const [menuOpen, setMenuOpen] = useState(false);
     const navRef = useRef<HTMLDivElement>(null);

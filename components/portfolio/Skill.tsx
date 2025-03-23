@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Anton } from 'next/font/google';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { it } from 'node:test';
 gsap.registerPlugin(ScrollTrigger);
 const anton = Anton({ weight: '400', subsets: ['latin'] });
 
