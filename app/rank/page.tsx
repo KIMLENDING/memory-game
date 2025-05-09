@@ -9,7 +9,7 @@ const Rank = () => {
     useEffect(() => {
         fetchRanking();
     }, [fetchRanking])
-    console.log(ranking)
+
     if (ranking === undefined) return <div>랭킹이 없습니다.</div>
     return (
         <div className=' w-full h-screen flex flex-col' style={{ backgroundColor: '#F4F8D3', color: '#333' }}>

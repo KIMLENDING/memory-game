@@ -1,7 +1,5 @@
 import Game from "@/components/memory-game/Game";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Suspense } from "react";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -22,14 +20,23 @@ export async function generateMetadata(
   return {
     title: "순간 기억력 테스트 게임",
     description,
+    keywords: [
+      "기억력 테스트",
+      "게임",
+      "순간 기억력",
+      "메모리 게임",
+      "기억력 훈련",
+      "두뇌 훈련",
+    ],
+    metadataBase: new URL(`${process.env.NEXTAUTH_URL}`),
     openGraph: {
       title: "순간 기억력 테스트 게임",
       description,
-      url: "https://memory-game-lyart-phi.vercel.app/",
+      url: new URL(`${process.env.NEXTAUTH_URL}`),
       siteName: "순간 기억력 테스트 게임",
       images: [
         {
-          url: "/image.png",
+          url: "/opengraph-image",
           width: 1200,
           height: 630,
           alt: "순간 기억력 테스트 게임 썸네일",
@@ -40,21 +47,14 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: "순간 기억력 테스트 게임",
       description,
-      images: "/image.png",
+      images: ["/opengraph-image"],
     },
   };
 }
 export default function Home() {
   return (
     <section>
-      <Suspense fallback={<div>Loading...</div>}>
-        <div className='fixed bottom-5 left-5 p-3 space-x-3'>
-
-          <Link href={'/test'} className=' bg-blue-500 text-white p-3 rounded-full shadow-lg '>Test</Link>
-
-        </div>
-        <Game />
-      </Suspense>
+      <Game />
     </section>
   );
 }
