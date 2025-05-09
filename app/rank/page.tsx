@@ -62,7 +62,7 @@ const Rank = () => {
     }
 
     return (
-        <div className="flex h-screen flex-col bg-gray-50">
+        <div className="flex h-screen flex-col bg-[#F4F8D3]">
             {/* 헤더 */}
             <div className="sticky top-0 z-10 flex items-center justify-center bg-white p-4 shadow-md">
                 <Trophy className="mr-2 h-6 w-6 text-blue-500" />
