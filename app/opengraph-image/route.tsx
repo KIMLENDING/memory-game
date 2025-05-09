@@ -4,7 +4,7 @@ export const config = {
     runtime: 'edge',
 };
 
-export async function GET(request: Request, searchParams: Promise<{ [key: string]: string | string[] | undefined }>) {
+export async function GET(searchParams: Promise<{ [key: string]: string | string[] | undefined }>) {
     try {
         // Get search params from URL
         const params = await searchParams;
