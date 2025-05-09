@@ -1,37 +1,115 @@
 'use client'
 import { useRankStore } from '@/store/rankStore';
 import { useRouter } from 'next/navigation';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Trophy, Home, Loader2 } from 'lucide-react';
 
 const Rank = () => {
     const { ranking, fetchRanking } = useRankStore();
-    const route = useRouter();
-    useEffect(() => {
-        fetchRanking();
-    }, [fetchRanking])
+    const router = useRouter();
+    const [isLoading, setIsLoading] = useState(true);
 
-    if (ranking === undefined) return <div>랭킹이 없습니다.</div>
+    useEffect(() => {
+        const loadData = async () => {
+            await fetchRanking();
+            setIsLoading(false);
+        };
+        loadData();
+    }, [fetchRanking]);
+
+    // 메달 색상 설정
+    const getMedalColor = (index: number) => {
+        switch (index) {
+            case 0: return 'text-yellow-500'; // 금메달
+            case 1: return 'text-gray-400';   // 은메달
+            case 2: return 'text-amber-700';  // 동메달
+            default: return 'text-gray-600';  // 그 외
+        }
+    };
+
+    // 랭킹 배경색 설정
+    const getRowBackground = (index: number) => {
+        switch (index) {
+            case 0: return 'bg-yellow-50';
+            case 1: return 'bg-gray-50';
+            case 2: return 'bg-amber-50';
+            default: return index % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+        }
+    };
+
+    if (isLoading) {
+        return (
+            <div className="flex h-screen items-center justify-center bg-gray-50">
+                <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+                <span className="ml-2 text-lg font-medium">랭킹 정보를 불러오는 중...</span>
+            </div>
+        );
+    }
+
+    if (!ranking || ranking.length === 0) {
+        return (
+            <div className="flex h-screen flex-col items-center justify-center bg-gray-50">
+                <div className="text-xl font-medium text-gray-600">랭킹 정보가 없습니다</div>
+                <button
+                    className="mt-6 flex items-center rounded-lg bg-blue-500 px-4 py-2 text-white shadow-md transition-colors hover:bg-blue-600"
+                    onClick={() => router.push('/')}
+                >
+                    <Home className="mr-2 h-5 w-5" />
+                    홈으로 돌아가기
+                </button>
+            </div>
+        );
+    }
+
     return (
-        <div className=' w-full h-screen flex flex-col' style={{ backgroundColor: '#F4F8D3', color: '#333' }}>
-            <div className='text-lg sm:text-xl font-semibold text-center text-nowrap' style={{ backgroundColor: '#F7CFD8', color: '#333' }}>랭킹</div>
-            <div className='flex-1 overflow-y-auto'>
+        <div className="flex h-screen flex-col bg-gray-50">
+            {/* 헤더 */}
+            <div className="sticky top-0 z-10 flex items-center justify-center bg-white p-4 shadow-md">
+                <Trophy className="mr-2 h-6 w-6 text-blue-500" />
+                <h1 className="text-2xl font-bold text-gray-800">플레이어 랭킹</h1>
+            </div>
+
+            {/* 컬럼 헤더 */}
+            <div className="sticky top-16 z-10 grid grid-cols-4 bg-gray-100 p-3 text-sm font-medium text-gray-600">
+                <div className="text-center">순위</div>
+                <div>플레이어</div>
+                <div className="text-center">레벨</div>
+                <div className="text-right pr-4">점수</div>
+            </div>
+
+            {/* 랭킹 목록 */}
+            <div className="flex-1 overflow-y-auto pb-20">
                 {ranking.map((rank, index) => (
-                    <div key={index} className="bg-teal-200 my-2 p-2 rounded flex justify-between items-center gap-5 whitespace-nowrap">
-                        <span>{index + 1}위</span>
-                        <span className='max-w-[8rem] w-[8rem] min-w-[4rem] text-ellipsis overflow-hidden whitespace-nowrap'>{rank.name}</span>
-                        <span>{rank.level}레벨</span>
-                        <span className='max-w-16 min-w-16 text-center'>{rank.score}점</span>
+                    <div
+                        key={index}
+                        className={`grid grid-cols-4 items-center border-b p-4 ${getRowBackground(index)}`}
+                    >
+                        <div className="flex justify-center">
+                            <span className={`font-bold ${getMedalColor(index)}`}>
+                                {index < 3 ? (
+                                    <Trophy className={`h-5 w-5 ${getMedalColor(index)}`} />
+                                ) : (
+                                    `${index + 1}`
+                                )}
+                            </span>
+                        </div>
+                        <div className="font-medium text-gray-800 truncate">{rank.name}</div>
+                        <div className="text-center font-medium text-blue-600">Lv.{rank.level}</div>
+                        <div className="text-right font-bold pr-2">{rank.score.toLocaleString()}</div>
                     </div>
                 ))}
             </div>
+
+            {/* 홈 버튼 */}
             <button
-                className='fixed bottom-5 right-5 bg-blue-500 text-white p-3 rounded-full shadow-lg'
-                onClick={() => route.push('/')}
+                className="fixed bottom-6 right-6 flex items-center justify-center rounded-full bg-blue-500 p-3 text-white shadow-lg transition-transform hover:bg-blue-600 hover:scale-105"
+                onClick={() => router.push('/')}
+                aria-label="홈으로 이동"
             >
-                홈으로
+                <Home className="h-6 w-6" />
             </button>
         </div>
-    )
-}
+    );
+};
 
-export default Rank
+export default Rank;
