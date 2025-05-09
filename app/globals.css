@@ -122,6 +122,24 @@
   body {
     @apply bg-background text-foreground;
   }
-  
+
+}
+
+@keyframes ani {
+  0% {
+    stroke-dashoffset: 500; /*500지점부터 svg가 나타남*/
+  }
+  50% {
+    stroke-dashoffset: 0; /*0지점부터 svg가 나타남*/
+  }
+  100% {
+    stroke-dashoffset: -500; /*-500지점부터 svg가 나타남*/
+  }
+}
+.moving-circle {
+  stroke-dasharray: 500; /* 선을 500px 길이로 설정 */
+  stroke-dashoffset: 500; /* 500px 만큼 밀어서 선이 처음에는 안 보이게 함 */
+  transform: rotate(-90deg); /* 시작 위치를 위쪽으로 조정 */
+  animation: ani 5s linear infinite; /* 5초 동안 애니메이션 반복 */
 }
 
