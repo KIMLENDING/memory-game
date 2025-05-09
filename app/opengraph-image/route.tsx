@@ -4,11 +4,12 @@ export const config = {
     runtime: 'edge',
 };
 
-export async function GET(searchParams: Promise<{ [key: string]: string | string[] | undefined }>) {
+export async function GET() {
     try {
         // Get search params from URL
-        const params = await searchParams;
-        const score = typeof params.score === 'string' ? params.score : '';
+        // const params = await searchParams;
+        // const score = typeof params.score === 'string' ? params.score : '';
+        // For testing purposes, replace with actual score from searchParams
 
         return new ImageResponse(
             (
@@ -42,46 +43,18 @@ export async function GET(searchParams: Promise<{ [key: string]: string | string
                     </h1>
 
                     {/* Score display */}
-                    {score ? (
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            marginTop: "20px",
-                        }}>
-                            <p style={{
-                                fontSize: "36px",
-                                fontWeight: "normal",
-                                margin: "0 0 20px 0",
-                                color: "#E2E8F0"
-                            }}>
-                                당신의 점수
-                            </p>
-                            <div style={{
-                                fontSize: "120px",
-                                fontWeight: "bold",
-                                margin: "0",
-                                color: "#38BDF8",
-                                textShadow: "0 4px 12px rgba(56, 189, 248, 0.4)",
-                                display: "flex",
-                                alignItems: "center",
-                            }}>
-                                {score}
-                                <span style={{ fontSize: "64px", marginLeft: "15px" }}>점</span>
-                            </div>
-                        </div>
-                    ) : (
-                        <p style={{
-                            fontSize: "32px",
-                            fontWeight: "normal",
-                            maxWidth: "800px",
-                            textAlign: "center",
-                            lineHeight: "1.5",
-                            color: "#E2E8F0"
-                        }}>
-                            도전해보세요!
-                        </p>
-                    )}
+
+                    <p style={{
+                        fontSize: "32px",
+                        fontWeight: "normal",
+                        maxWidth: "800px",
+                        textAlign: "center",
+                        lineHeight: "1.5",
+                        color: "#E2E8F0"
+                    }}>
+                        도전해보세요!
+                    </p>
+
 
                     {/* Footer */}
                     <div style={{
