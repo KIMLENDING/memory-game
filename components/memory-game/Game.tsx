@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from "gsap";
 import { useGameStore } from '@/store/gameStore';
 import { DrawerDialogDemo } from './DrawerDialogDame';
-import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 
 const Game = () => {
@@ -36,7 +35,6 @@ const Game = () => {
             setShowNumbers(true); // 숫자 보여지는 상태 초기화
             setStartTime(null); // 시작 시간 초기화
             setProgress(0); // 진행 바 초기화
-            console.log('timeForCurrentLevel', timeForCurrentLevel, level);
             setTimeout(() => {
                 setShowNumbers(false);
                 setStartTime(Date.now()); // 숫자가 사라지는 순간 시간 저장
@@ -83,11 +81,9 @@ const Game = () => {
                         // 첫 번째 블록을 숨기고 두 번째, 세 번째 블록 이동
                         gsap.to(firstBlockRef.current, { height: 50 });
                         if (secondBlockRef.current && thirdBlockRef.current) {
-                            gsap.to([secondBlockRef.current, thirdBlockRef.current], {
+                            gsap.to([thirdBlockRef.current, secondBlockRef.current], {
                                 y: -50, // 위로 50px 이동
                                 duration: 1,
-                                stagger: 0.3, // 두 번째, 세 번째 블록이 순차적으로 이동
-
                                 onComplete: () => {
                                     // 애니메이션 완료 시 버튼 클릭 허용
                                     firstBlockRef.current?.classList.remove('pointer-events-none');
@@ -174,66 +170,77 @@ const Game = () => {
                     ></div>
                 </div>
 
+
                 {/*카드 블럭 */}
-                <div
-                    ref={firstBlockRef}
-                    className={`grid grid-cols-4 gap-2 sm:gap-3 md:gap-4 p-2 rounded-lg w-full max-w-md sm:max-w-lg md:max-w-2xl 
-                    ${gameOver ? 'pointer-events-none' : ''}`}>
-                    {numbers.map((num, index) => (
-                        <button
-                            key={num}
-                            ref={(el) => { if (el) cardRefs.current[num] = el; }}
-                            className={`aspect-square flex items-center justify-center rounded-lg 
-                                text-xl sm:text-2xl md:text-3xl font-bold 
-                            transition-transform  transform hover:scale-110 hover:shadow-lg `}
-                            style={{
-                                backgroundColor: showNumbers || revealedCards[index] ? '#F7CFD8' : '#73C7C7',
-                                color: '#333',
-                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                            }}
-                            onClick={() => handleClick(num, index)}
-                        >
-                            {showNumbers || revealedCards[index] ? num : "?"}
-                        </button>
-                    ))}
-                </div>
-
-
-                {/* 다시하기 && 복사 */}
-                {gameOver && (
+                {isPlaying && (
                     <div
-                        ref={secondBlockRef}
-                        className='flex flex-row items-center space-x-4 mt-2'>
-                        <Button variant="default" onClick={() => {
-                            setStartTime(null); // 시작 시간 초기화
-                            resetGame(); // 게임 초기화
-                            setGameOver(false); // 게임 종료 상태 초기화
-                        }}>
-                            다시하기
-                        </Button>
-                        <DrawerDialogDemo score={score} level={level} />
+                        ref={firstBlockRef}
+                        className={`grid grid-cols-4 gap-2 sm:gap-3 md:gap-4 p-2 rounded-lg w-full max-w-md sm:max-w-lg md:max-w-2xl bg-[#adaf98] 
+                    ${gameOver ? 'pointer-events-none' : ''}`}>
+                        {numbers.map((num, index) => (
+                            <button
+                                key={num}
+                                ref={(el) => { if (el) cardRefs.current[num] = el; }}
+                                className={`aspect-square flex items-center justify-center rounded-lg 
+                            text-xl sm:text-2xl md:text-3xl font-bold 
+                            transition-transform  transform hover:scale-110 hover:shadow-lg `}
+                                style={{
+                                    backgroundColor: showNumbers || revealedCards[index] ? '#F7CFD8' : '#73C7C7',
+                                    color: '#333',
+                                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                                }}
+                                onClick={() => handleClick(num, index)}
+                            >
+                                {showNumbers || revealedCards[index] ? num : "?"}
+                            </button>
+                        ))}
                     </div>
                 )}
 
-                {/* 레벨 && 점수 */}
-                <div
-                    ref={thirdBlockRef}
-                    className="mt-4 flex flex-row items-center space-x-4 sm:space-y-0 sm:space-x-4">
-                    <div className="p-3 sm:p-4 rounded-lg text-lg sm:text-xl font-semibold w-full sm:w-auto text-center"
-                        style={{ backgroundColor: '#F7CFD8' }}>
-                        <span style={{ color: '#333' }}>레벨: {level}</span>
+
+
+                <div className='grid grid-cols-1 gap-4 w-full max-w-md sm:max-w-lg md:max-w-2xl mt-24'>
+
+                    {/* 레벨 && 점수 */}
+                    <div
+                        ref={thirdBlockRef}
+                        className=" flex flex-row items-center gap-4 ">
+                        <div className="flex-1 p-3 sm:p-4 rounded-lg text-lg sm:text-xl font-semibold w-full sm:w-auto text-center"
+                            style={{ backgroundColor: '#F7CFD8' }}>
+                            <span style={{ color: '#333' }}>레벨: {level}</span>
+                        </div>
+                        <div className=" flex-1 p-3 sm:p-4 rounded-lg text-lg sm:text-xl font-semibold w-full sm:w-auto text-center text-nowrap"
+                            style={{ backgroundColor: '#F7CFD8' }}>
+                            <span style={{ color: '#333' }}>점수: {score.toFixed(1)}</span>
+                        </div>
                     </div>
-                    <div className="p-3 sm:p-4 rounded-lg text-lg sm:text-xl font-semibold w-full sm:w-auto text-center text-nowrap"
-                        style={{ backgroundColor: '#F7CFD8' }}>
-                        <span style={{ color: '#333' }}>점수: {score.toFixed(1)}</span>
-                    </div>
+                    {/* 다시하기 && 복사 */}
+                    {gameOver && (
+                        <div
+                            ref={secondBlockRef}
+                            className='flex flex-row items-center gap-4 '>
+                            <button className=" px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-lg sm:text-xl font-bold 
+                w-full  text-center transition-all hover:shadow-lg hover:scale-105"
+                                style={{
+                                    backgroundColor: '#73C7C7',
+                                    color: '#333'
+                                }} onClick={() => {
+                                    setStartTime(null); // 시작 시간 초기화
+                                    resetGame(); // 게임 초기화
+                                    setGameOver(false); // 게임 종료 상태 초기화
+                                }}>
+                                다시하기
+                            </button>
+                            <DrawerDialogDemo score={score} level={level} />
+                        </div>
+                    )}
                 </div>
 
                 {/*게임 시작버튼 */}
                 {!isPlaying && (
                     <button
-                        className="mt-6 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-lg sm:text-xl font-bold 
-                w-full sm:w-auto text-center transition-all hover:shadow-lg hover:scale-105"
+                        className="mt-8 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-lg sm:text-xl font-bold 
+                max-w-2xl w-full text-center transition-all hover:shadow-lg hover:scale-105"
                         style={{
                             backgroundColor: '#73C7C7',
                             color: '#333'

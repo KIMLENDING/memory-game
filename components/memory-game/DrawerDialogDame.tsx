@@ -59,7 +59,14 @@ export function DrawerDialogDemo({ score, level }: { score: number, level: numbe
         return (
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                    <Button variant="outline">랭킹등록</Button>
+                    <button className=" px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-lg sm:text-xl font-bold 
+                w-full  text-center transition-all hover:shadow-lg hover:scale-105 "
+                        style={{
+                            backgroundColor: '#73C7C7',
+                            color: '#333'
+                        }}>
+                        랭킹등록
+                    </button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
@@ -91,7 +98,14 @@ export function DrawerDialogDemo({ score, level }: { score: number, level: numbe
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <Button variant="outline">랭킹등록</Button>
+                <button className=" px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-lg sm:text-xl font-bold 
+                w-full  text-center transition-all hover:shadow-lg hover:scale-105 "
+                    style={{
+                        backgroundColor: '#73C7C7',
+                        color: '#333'
+                    }}>
+                    랭킹등록
+                </button>
             </DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader className="text-left">
