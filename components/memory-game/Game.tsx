@@ -223,7 +223,7 @@ const Game = () => {
 
 
                 {/* 레벨 && 점수 */}
-                <div className='grid grid-cols-1 gap-4 w-full max-w-md sm:max-w-lg md:max-w-2xl mt-24'>
+                <div className='grid grid-cols-1 gap-4 w-full max-w-md sm:max-w-lg md:max-w-2xl mt-4'>
 
                     <div
                         ref={thirdBlockRef}
