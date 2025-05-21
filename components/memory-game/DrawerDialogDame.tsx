@@ -47,7 +47,7 @@ export function DrawerDialogDemo({ score, level }: { score: number, level: numbe
     };
     // 점수에 포함된 URL을 복사하는 함수
     const copyLinkToClipboard = () => {
-        const url = `${process.env.NEXTAUTH_URL}/?score=${score.toFixed(1)}`;
+        const url = `${window.location.origin}/?score=${score.toFixed(1)}`;
         navigator.clipboard.writeText(url).then(() => {
             alert('복사완료')
         }).catch((err) => {
