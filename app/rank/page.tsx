@@ -3,6 +3,7 @@ import { useRankStore } from '@/store/rankStore';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { Trophy, Home, Loader2 } from 'lucide-react';
+import Link from 'next/link';
 
 const Rank = () => {
     const { ranking, fetchRanking } = useRankStore();
@@ -101,13 +102,13 @@ const Rank = () => {
             </div>
 
             {/* 홈 버튼 */}
-            <button
+            <a href={"/"}
                 className="fixed bottom-6 right-6 flex items-center justify-center rounded-full bg-blue-500 p-3 text-white shadow-lg transition-transform hover:bg-blue-600 hover:scale-105"
-                onClick={() => router.push('/')}
+
                 aria-label="홈으로 이동"
             >
                 <Home className="h-6 w-6" />
-            </button>
+            </a>
         </div>
     );
 };

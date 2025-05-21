@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { useGameStore } from '@/store/gameStore';
 import { DrawerDialogDemo } from './DrawerDialogDame';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const Game = () => {
     const { level, numbers, correctSequence, isPlaying, score, timeForCurrentLevel, updateScore, generateNumbers, setTimeForLevel, startGame, nextLevel, resetGame } = useGameStore();
@@ -39,15 +40,15 @@ const Game = () => {
             setTimeout(() => {
                 setShowNumbers(false);
                 setStartTime(Date.now()); // 숫자가 사라지는 순간 시간 저장
-            }, (timeForCurrentLevel + 0.2) * 1000); // 단계별 시간에 맞춰 숫자 숨김
+            }, (timeForCurrentLevel + 1) * 1000); // 단계별 시간에 맞춰 숫자 숨김 모두 보인후 1초 후 숨김
 
             // 진행 바 업데이트
             let timeElapsed = 0;
             const interval = setInterval(() => {
                 timeElapsed += 0.1;
-                setProgress(Math.min((timeElapsed / timeForCurrentLevel) * 100, 100)); // 진행 바 업데이트
+                setProgress(Math.min((timeElapsed / (timeForCurrentLevel + 0.5)) * 100, 100)); // 진행 바 업데이트
 
-                if (timeElapsed >= timeForCurrentLevel) {
+                if (timeElapsed >= timeForCurrentLevel + 0.5) { // 시간 초과 시
                     clearInterval(interval); // 시간 초과 시 진행 바 업데이트 중지
                 }
             }, 100); // 0.1초마다 업데이트
@@ -155,12 +156,12 @@ const Game = () => {
             <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8"
                 style={{ backgroundColor: '#F4F8D3' }}>
 
-                <button
+                <Link href={'/rank'}
                     className='fixed bottom-5 right-5 bg-blue-500 text-white p-3 rounded-full shadow-lg'
-                    onClick={() => route.push('/rank')}
+
                 >
                     랭킹
-                </button>
+                </Link>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center"
                     style={{ color: '#333' }}>
                     순간 기억력 테스트
