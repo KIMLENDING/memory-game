@@ -18,6 +18,7 @@ const Game = () => {
     const firstBlockRef = useRef<HTMLDivElement | null>(null);
     const secondBlockRef = useRef<HTMLDivElement | null>(null);
     const thirdBlockRef = useRef<HTMLDivElement | null>(null);
+    const gameOverRef = useRef<HTMLDivElement | null>(null);
     const route = useRouter();
 
     useEffect(() => {
@@ -69,7 +70,7 @@ const Game = () => {
             // 첫 번째 블록을 서서히 사라지게 하고, 그 후 두 번째, 세 번째 블록을 위로 이동
             if (firstBlockRef.current) {
                 gsap.to(firstBlockRef.current, {
-                    opacity: 0,
+                    // opacity: 0,
                     duration: 1,
                     onStart: () => {
                         // 애니메이션 시작 시 버튼 클릭 막기
@@ -78,21 +79,27 @@ const Game = () => {
                         thirdBlockRef.current?.classList.add('pointer-events-none');
                     },
                     onComplete: () => {
-                        // 첫 번째 블록을 숨기고 두 번째, 세 번째 블록 이동
-                        gsap.to(firstBlockRef.current, { height: 50 });
-                        if (secondBlockRef.current && thirdBlockRef.current) {
-                            gsap.to([thirdBlockRef.current, secondBlockRef.current], {
-                                y: -50, // 위로 50px 이동
-                                duration: 1,
-                                onComplete: () => {
-                                    // 애니메이션 완료 시 버튼 클릭 허용
-                                    firstBlockRef.current?.classList.remove('pointer-events-none');
-                                    secondBlockRef.current?.classList.remove('pointer-events-none');
-                                    thirdBlockRef.current?.classList.remove('pointer-events-none');
-                                }
-                            });
-                        }
-                    },
+                        // 애니메이션 완료 시 버튼 클릭 허용
+                        firstBlockRef.current?.classList.remove('pointer-events-none');
+                        secondBlockRef.current?.classList.remove('pointer-events-none');
+                        thirdBlockRef.current?.classList.remove('pointer-events-none');
+                    }
+                    // onComplete: () => {
+                    //     // 첫 번째 블록을 숨기고 두 번째, 세 번째 블록 이동
+                    //     gsap.to(firstBlockRef.current, { height: 50 });
+                    //     if (secondBlockRef.current && thirdBlockRef.current) {
+                    //         gsap.to([thirdBlockRef.current, secondBlockRef.current], {
+                    //             y: -50, // 위로 50px 이동
+                    //             duration: 1,
+                    //             onComplete: () => {
+                    //                 // 애니메이션 완료 시 버튼 클릭 허용
+                    //                 firstBlockRef.current?.classList.remove('pointer-events-none');
+                    //                 secondBlockRef.current?.classList.remove('pointer-events-none');
+                    //                 thirdBlockRef.current?.classList.remove('pointer-events-none');
+                    //             }
+                    //         });
+                    //     }
+                    // },
                 });
             }
         } else {
@@ -182,10 +189,12 @@ const Game = () => {
                                 key={num}
                                 ref={(el) => { if (el) cardRefs.current[num] = el; }}
                                 className={`aspect-square flex items-center justify-center rounded-lg 
-                            text-xl sm:text-2xl md:text-3xl font-bold 
-                            transition-transform  transform hover:scale-110 hover:shadow-lg `}
+                                          text-xl sm:text-2xl md:text-3xl font-bold 
+                                          transition-transform transform hover:scale-110 hover:shadow-lg
+                                          ${gameOver && clickedNumbers.at(-1) === num ? 'shake' : ''}`}
                                 style={{
-                                    backgroundColor: showNumbers || revealedCards[index] ? '#F7CFD8' : '#73C7C7',
+                                    backgroundColor: gameOver && clickedNumbers.at(-1) === num ? '#FF5252' :
+                                        showNumbers || revealedCards[index] ? '#F7CFD8' : '#73C7C7',
                                     color: '#333',
                                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                                 }}
@@ -197,11 +206,25 @@ const Game = () => {
                     </div>
                 )}
 
+                {/*게임 오버*/}
+                {gameOver && (
+                    <div
+                        ref={gameOverRef}
+                        className="flex flex-col items-center justify-center mt-4 p-4 rounded-lg w-full max-w-md sm:max-w-lg md:max-w-2xl bg-[#adaf98]">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-center"
+                            style={{ color: '#333' }}>
+                            게임 오버
+                        </h2>
+                        <p className="text-base sm:text-lg md:text-xl  text-zinc-700 font-medium text-center">
+                            누른 순서: {clickedNumbers.join(', ')}
+                        </p>
+                    </div>
+                )}
 
 
+                {/* 레벨 && 점수 */}
                 <div className='grid grid-cols-1 gap-4 w-full max-w-md sm:max-w-lg md:max-w-2xl mt-24'>
 
-                    {/* 레벨 && 점수 */}
                     <div
                         ref={thirdBlockRef}
                         className=" flex flex-row items-center gap-4 ">
