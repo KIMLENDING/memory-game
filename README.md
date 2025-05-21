@@ -6,9 +6,7 @@
 
 ## 📺 게임 시연영상
 
-<img src="https://github.com/user-attachments/assets/1b45b45b-1f9d-49fc-b2a9-6af84e926e14" width="100%" alt="게임 시연영상">
-
----
+## ![시연영상상](https://github.com/user-attachments/assets/d95c2b32-c504-4b2a-953c-a06a0f55182e)
 
 ## 📌 프로젝트 목적
 
