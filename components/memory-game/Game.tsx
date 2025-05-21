@@ -20,7 +20,7 @@ const Game = () => {
     const secondBlockRef = useRef<HTMLDivElement | null>(null);
     const thirdBlockRef = useRef<HTMLDivElement | null>(null);
     const gameOverRef = useRef<HTMLDivElement | null>(null);
-    const route = useRouter();
+
 
     useEffect(() => {
         if (isPlaying) {

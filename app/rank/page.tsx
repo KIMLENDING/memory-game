@@ -3,7 +3,6 @@ import { useRankStore } from '@/store/rankStore';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { Trophy, Home, Loader2 } from 'lucide-react';
-import Link from 'next/link';
 
 const Rank = () => {
     const { ranking, fetchRanking } = useRankStore();
